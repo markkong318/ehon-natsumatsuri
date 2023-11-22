@@ -1,0 +1,53 @@
+{
+  "decrease": 0.2,
+  "events": [
+    {
+      "on": "start",
+      "messages": [
+        "ステージ2",
+        "ゴブリンウォリアー　x 3"
+      ]
+    },
+    {
+      "on": "timeout",
+      "messages": [
+        "タイムアウト！攻撃を受けた！"
+      ]
+    },
+    {
+      "on": "kill",
+      "messages": [
+        "敵を倒しました"
+      ]
+    },
+    {
+      "on": "fail",
+      "messages": [
+        "ライフがなくなりました",
+        "GAME OVER"
+      ]
+    },
+    {
+      "on": "success",
+      "messages": [
+        "おめでとう",
+        "クリアしました",
+        "次のステージを行きましょう！"
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "enemyId": "carcassFeeder",
+      "quiz": "ててて"
+    },
+    {
+      "enemyId": "carcassFeeder",
+      "quiz": "ねねね"
+    },
+    {
+      "enemyId": "carcassFeeder",
+      "quiz": "へへへ"
+    }
+  ]
+}

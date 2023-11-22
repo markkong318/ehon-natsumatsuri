@@ -1,0 +1,53 @@
+{
+  "decrease": 0.2,
+  "events": [
+    {
+      "on": "start",
+      "messages": [
+        "ステージ3",
+        "メタルスケルトン　x 3"
+      ]
+    },
+    {
+      "on": "timeout",
+      "messages": [
+        "タイムアウト！攻撃を受けた！"
+      ]
+    },
+    {
+      "on": "kill",
+      "messages": [
+        "敵を倒しました"
+      ]
+    },
+    {
+      "on": "fail",
+      "messages": [
+        "ライフがなくなりました",
+        "GAME OVER"
+      ]
+    },
+    {
+      "on": "success",
+      "messages": [
+        "おめでとう",
+        "クリアしました",
+        "次のステージを行きましょう！"
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "enemyId": "graveRevenant",
+      "quiz": "むむむ"
+    },
+    {
+      "enemyId": "graveRevenant",
+      "quiz": "ゆゆゆ"
+    },
+    {
+      "enemyId": "graveRevenant",
+      "quiz": "るるる"
+    }
+  ]
+}
