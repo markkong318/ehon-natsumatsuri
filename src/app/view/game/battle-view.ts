@@ -147,12 +147,17 @@ export class BattleView extends View {
     let ctx = canvas.getContext('2d');
 
 // use the context to draw a linear gradient
-    let grd = ctx.createLinearGradient(0, 0, text.width, 0);
+    let grd = ctx.createLinearGradient(50, 0, text.width, 0);
     grd.addColorStop(0, 'white');
     grd.addColorStop(1, 'black');
 
+    ctx.fillStyle = "white"
+    ctx.fillRect(0, 0, 50, text.height)
+
     ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, text.width, text.height);
+    ctx.fillRect(50, 0, text.width, text.height);
+
+
 
     let gradient = PIXI.Texture.from(canvas);
 
@@ -181,12 +186,10 @@ export class BattleView extends View {
       dropShadowDistance: 0,
       fill: [
         "#ffffff",
-        "rgba(255, 255, 255, 1)"
       ],
-      // fill: "rgba(243, 33, 22, 0.5)",
       fillGradientType: 1,
       fillGradientStops: [
-        0.5
+        0
       ],
       lineJoin: "round",
       miterLimit: 6,
