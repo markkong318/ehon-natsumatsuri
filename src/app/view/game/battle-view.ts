@@ -149,7 +149,7 @@ export class BattleView extends View {
 // use the context to draw a linear gradient
     let grd = ctx.createLinearGradient(50, 0, text.width, 0);
     grd.addColorStop(0, 'white');
-    grd.addColorStop(1, 'black');
+    grd.addColorStop(0.3, 'black');
 
     ctx.fillStyle = "white"
     ctx.fillRect(0, 0, 50, text.height)
@@ -201,4 +201,6 @@ export class BattleView extends View {
     this.addChild(gradientSprite)
     this.addChild(text3);
   }
+
+  // playSentence (text, sec)
 }
