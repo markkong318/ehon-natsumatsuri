@@ -1,23 +1,11 @@
 import * as PIXI from 'pixi.js';
 
 import {View} from '../../../framework/view';
-import bottle from '../../../framework/bottle';
 import {BattleTexture} from '../../texture/battle-texture';
-import {EnemyGroupView} from './battle/enemy-group-view';
-import {Size} from '../../../framework/size';
-import {Background} from '../../../framework/background';
-import {QuizGroupView} from './battle/quiz-group-view';
-import {StateView} from './battle/state-view';
-import {MessageView} from './battle/message-view';
+// import voice from '../../../assets/voices/test.wav';
 
-export class BattleView extends View {
+export class PageView extends View {
   private battleTexture: BattleTexture;
-
-  private messageView: MessageView;
-
-  private enemyGroupView: EnemyGroupView;
-  private quizGroupView: QuizGroupView;
-  private stateView: StateView;
 
   private baseHeight = 450;
   private baseY: number = 0;
@@ -149,7 +137,7 @@ export class BattleView extends View {
 // use the context to draw a linear gradient
     let grd = ctx.createLinearGradient(50, 0, text.width, 0);
     grd.addColorStop(0, 'white');
-    grd.addColorStop(0.3, 'black');
+    grd.addColorStop(1, 'black');
 
     ctx.fillStyle = "white"
     ctx.fillRect(0, 0, 50, text.height)
@@ -198,9 +186,26 @@ export class BattleView extends View {
     });
     const text3 = new PIXI.Text('あああああ', style);
     text3.mask = gradientSprite;
+    // gradientSprite.x = gradientSprite.x + 50;
     this.addChild(gradientSprite)
     this.addChild(text3);
+
+    // @ts-ignore
+    const url = new URL('../../../assets/voices/test.wav', import.meta.url);
+    const audioElm = new Audio(url.href);
+    audioElm.play();
+
+    audioElm.addEventListener('loadedmetadata', function() {
+      console.log('play time:' + audioElm.duration);
+    });
+
+
+    audioElm.addEventListener('loadedmetadata', function() {
+      console.log('play done');
+    });
+
+
+
   }
 
-  // playSentence (text, sec)
 }
