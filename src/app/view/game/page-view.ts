@@ -1,18 +1,28 @@
 import * as PIXI from 'pixi.js';
 
 import {View} from '../../../framework/view';
-import {BattleTexture} from '../../texture/battle-texture';
+import {SentenceModel} from "../../model/sentence-model";
+import {MaskSprite} from "../../sprite/mask-sprite";
+
 // import voice from '../../../assets/voices/test.wav';
 
 export class PageView extends View {
-  private battleTexture: BattleTexture;
 
-  private baseHeight = 450;
-  private baseY: number = 0;
+  private sentences: SentenceModel[];
+  private images: PIXI.Sprite[];
 
   constructor() {
     super();
   }
+
+  public setSentences(sentences: SentenceModel[]) {
+    this.sentences = sentences;
+  }
+
+  public initImages(images: PIXI.Sprite[]) {
+    this.images = images;
+  }
+
 
   public initUI() {
     // this.battleTexture = bottle.singleton(BattleTexture);
@@ -146,7 +156,6 @@ export class PageView extends View {
     ctx.fillRect(50, 0, text.width, text.height);
 
 
-
     let gradient = PIXI.Texture.from(canvas);
 
     let gradientSprite = new PIXI.Sprite(gradient);
@@ -190,20 +199,30 @@ export class PageView extends View {
     this.addChild(gradientSprite)
     this.addChild(text3);
 
+
+    const mask = new MaskSprite().get();
+
+    const text4 = new PIXI.Text('あああああ', style);
+    text4.mask = mask;
+    // gradientSprite.y = gradientSprite.y + 50;
+    text4.y = text4.y + 100;
+    mask.y = mask.y + 100;
+    this.addChild(mask)
+    this.addChild(text4);
+
     // @ts-ignore
     const url = new URL('../../../assets/voices/test.wav', import.meta.url);
     const audioElm = new Audio(url.href);
     audioElm.play();
 
-    audioElm.addEventListener('loadedmetadata', function() {
+    audioElm.addEventListener('loadedmetadata', function () {
       console.log('play time:' + audioElm.duration);
     });
 
 
-    audioElm.addEventListener('loadedmetadata', function() {
+    audioElm.addEventListener('loadedmetadata', function () {
       console.log('play done');
     });
-
 
 
   }

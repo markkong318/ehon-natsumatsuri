@@ -4,7 +4,6 @@ import {Size} from '../framework/size';
 import {Storage} from './storage/storage';
 import bottle from '../framework/bottle';
 import {MainController} from './controller/main-controller';
-import {StageModel} from './model/stage-model';
 
 export class GameApplication extends Application {
   private mainController: MainController;
@@ -31,8 +30,6 @@ export class GameApplication extends Application {
 
     const viewWidth = 480;
     const viewHeight = this.getViewHeight(viewWidth);
-
-    bottle.singleton(StageModel);
 
     this.gameView = bottle.singleton(GameView);
     this.gameView.size = new Size(viewWidth, viewHeight);

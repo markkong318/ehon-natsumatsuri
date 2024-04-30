@@ -30,7 +30,6 @@ export class FlickerTexture extends Texture {
     g.endFill();
 
 
-
     return this.renderer.generateTexture(g, {scaleMode: PIXI.SCALE_MODES.LINEAR});
   }
 
