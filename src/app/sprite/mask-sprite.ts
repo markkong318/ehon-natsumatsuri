@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 
 export class MaskSprite {
 
-  public static readonly WIDTH: number = 100;
+  public static readonly WIDTH: number = 480;
   public static readonly HEIGHT: number = 50;
   public static readonly GRADIENT_WIDTH: number = 50;
 

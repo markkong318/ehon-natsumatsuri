@@ -1,8 +1,8 @@
 import {Model} from "../../framework/model";
 import {Sprite} from "pixi.js";
-import {SentenceModel} from "./sentence-model";
+import {ArticleModel} from "./article-model";
 
 export class PageModel extends Model {
-  public sentences: SentenceModel[];
-  public images: Sprite[];
+  public article: ArticleModel;
+  public image: Sprite;
 }

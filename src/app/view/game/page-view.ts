@@ -3,7 +3,10 @@ import * as PIXI from 'pixi.js';
 import {View} from '../../../framework/view';
 import {SentenceModel} from "../../model/sentence-model";
 import {MaskSprite} from "../../sprite/mask-sprite";
-
+import { gsap } from 'gsap';
+import {ArticleModel} from "../../model/article-model";
+import {ArticleView} from "./article-view";
+import {ResourceController} from "../../controller/resource-controller";
 // import voice from '../../../assets/voices/test.wav';
 
 export class PageView extends View {
@@ -24,7 +27,7 @@ export class PageView extends View {
   }
 
 
-  public initUI() {
+  public async initUI() {
     // this.battleTexture = bottle.singleton(BattleTexture);
     //
     // this.baseY = (this.height - this.baseHeight) / 2;
@@ -202,18 +205,33 @@ export class PageView extends View {
 
     const mask = new MaskSprite().get();
 
-    const text4 = new PIXI.Text('あああああ', style);
+    const text4 = new PIXI.Text('テストテストテスト', style);
     text4.mask = mask;
     // gradientSprite.y = gradientSprite.y + 50;
     text4.y = text4.y + 100;
     mask.y = mask.y + 100;
+    // mask.x += 100;
     this.addChild(mask)
     this.addChild(text4);
+
+    mask.x = -480;
+
 
     // @ts-ignore
     const url = new URL('../../../assets/voices/test.wav', import.meta.url);
     const audioElm = new Audio(url.href);
-    audioElm.play();
+    audioElm.preload = "auto";
+    // setTimeout(() => {
+    //
+    //
+    //   gsap.to(mask, {
+    //     x: text4.x + text4.width - 480 + 50, // Destination x value
+    //     duration: Math.ceil(audioElm.duration), // Duration in seconds
+    //   });
+    //
+    //   audioElm.play();
+    // }, 3000)
+
 
     audioElm.addEventListener('loadedmetadata', function () {
       console.log('play time:' + audioElm.duration);
@@ -224,7 +242,24 @@ export class PageView extends View {
       console.log('play done');
     });
 
+    /////article test
 
+    const sentence = new SentenceModel()
+    sentence.text = 'テストテストテスト';
+    sentence.audio = '../../../assets/voices/test.wav';
+
+    const article = new ArticleModel();
+    article.sentences = [
+      sentence, sentence, sentence,
+    ];
+
+    const articleVew = new ArticleView(article);
+    await articleVew.init();
+    this.addChild(articleVew);
+
+    articleVew.play();
+
+    const resourceController = new ResourceController();
   }
 
 }
