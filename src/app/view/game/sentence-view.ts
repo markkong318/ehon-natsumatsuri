@@ -7,20 +7,20 @@ import {TextStyle} from "../../style/text-style";
 export class SentenceView extends View {
 
   private readonly text: string;
-  private readonly audio: string;
+  private readonly voice: HTMLAudioElement;
 
   private textSprite: PIXI.Text;
   private maskSprite: PIXI.Sprite;
   private audioElm: HTMLAudioElement;
 
-  constructor(text: string, audio: string) {
+  constructor(text: string, voice: HTMLAudioElement) {
     super();
 
     this.text = text;
-    this.audio = audio;
+    this.voice = voice;
   }
 
-  public async init() {
+  public init() {
     const style = new TextStyle().get()
 
     this.textSprite = new PIXI.Text(this.text, style);
@@ -34,37 +34,38 @@ export class SentenceView extends View {
     this.addChild(this.maskSprite)
     this.addChild(this.textSprite);
 
-    // @ts-ignore
-    const url = new URL('../../../assets/voices/test.wav', import.meta.url);
-    this.audioElm = new Audio(url.href);
-    this.audioElm.preload = "auto";
-
-    await this.loadAudio(this.audioElm);
+    // // @ts-ignore
+    // const url = new URL('../../../assets/voices/test.wav', import.meta.url);
+    // this.audioElm = new Audio(url.href);
+    // this.audioElm.preload = "auto";
+    //
+    // await this.loadAudio(this.audioElm);
   }
 
-  loadAudio(audioElm: HTMLAudioElement) {
-    return new Promise<void>((resolve) => {
-      audioElm.oncanplaythrough = () => {
-        resolve();
-      };
-      audioElm.onerror = () => {
-        console.error('Error loading audio');
-        resolve();
-      };
-      audioElm.preload = "auto";
-      audioElm.load();
-    });
-  }
+  // loadAudio(audioElm: HTMLAudioElement) {
+  //   return new Promise<void>((resolve) => {
+  //     audioElm.oncanplaythrough = () => {
+  //       resolve();
+  //     };
+  //     audioElm.onerror = () => {
+  //       console.error('Error loading audio');
+  //       resolve();
+  //     };
+  //     audioElm.preload = "auto";
+  //     audioElm.load();
+  //   });
+  // }
 
   play(timeline: gsap.core.Timeline) {
     console.log(this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH);
     timeline.to(this.maskSprite, {
       x: this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH,
-      duration: this.audioElm.duration,
-      onStart: function (audioElm: HTMLAudioElement) {
-        audioElm.play();
+      duration: this.voice.duration,
+      onStart: function (voice: HTMLAudioElement) {
+        voice.currentTime = 0;
+        voice.play();
       },
-      onStartParams: [this.audioElm],
+      onStartParams: [this.voice],
     });
   }
 }

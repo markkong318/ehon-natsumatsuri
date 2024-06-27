@@ -233,33 +233,42 @@ export class PageView extends View {
     // }, 3000)
 
 
-    audioElm.addEventListener('loadedmetadata', function () {
-      console.log('play time:' + audioElm.duration);
-    });
-
-
-    audioElm.addEventListener('loadedmetadata', function () {
-      console.log('play done');
-    });
+    // audioElm.addEventListener('loadedmetadata', function () {
+    //   console.log('play time:' + audioElm.duration);
+    // });
+    //
+    //
+    // audioElm.addEventListener('loadedmetadata', function () {
+    //   console.log('play done');
+    // });
 
     /////article test
 
-    const sentence = new SentenceModel()
-    sentence.text = 'テストテストテスト';
-    sentence.audio = '../../../assets/voices/test.wav';
+    // const sentence = new SentenceModel()
+    // sentence.text = 'テストテストテスト';
+    // sentence.voice = audioElm;
+    //
+    // const article = new ArticleModel();
+    // article.sentences = [
+    //   sentence, sentence, sentence,
+    // ];
 
-    const article = new ArticleModel();
-    article.sentences = [
-      sentence, sentence, sentence,
-    ];
+    // const articleVew = new ArticleView(article);
+    // await articleVew.init();
+    // this.addChild(articleVew);
+    //
+    // articleVew.play();
 
+    const resourceController = new ResourceController();
+    await resourceController.load();
+  }
+
+  public test2(article: ArticleModel) {
     const articleVew = new ArticleView(article);
-    await articleVew.init();
+    articleVew.init();
     this.addChild(articleVew);
 
     articleVew.play();
-
-    const resourceController = new ResourceController();
   }
 
 }

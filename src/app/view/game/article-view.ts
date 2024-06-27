@@ -14,14 +14,14 @@ export class ArticleView extends View {
     this.article = article;
   }
 
-  public async init() {
+  public init() {
     super.init();
 
     let y = 0;
 
     for (let i = 0; i < this.article.sentences.length; i++) {
-      const view = new SentenceView(this.article.sentences[i].text, this.article.sentences[i].audio);
-      await view.init();
+      const view = new SentenceView(this.article.sentences[i].text, this.article.sentences[i].voice);
+      view.init();
       view.x = 0;
       view.y = y;
 

@@ -4,11 +4,13 @@ import {Size} from '../framework/size';
 import {Storage} from './storage/storage';
 import bottle from '../framework/bottle';
 import {MainController} from './controller/main-controller';
+import {VoiceResource} from "./storage/voice-resource";
 
 export class GameApplication extends Application {
   private mainController: MainController;
   private gameView: GameView;
   private storage: Storage;
+  private voiceResource: VoiceResource;
 
   constructor(options?) {
     super(options);
@@ -26,6 +28,7 @@ export class GameApplication extends Application {
   public initScene(): void {
     bottle.setObject(this.renderer);
 
+    this.voiceResource = bottle.singleton(VoiceResource);
     this.storage = bottle.singleton(Storage);
 
     const viewWidth = 480;
