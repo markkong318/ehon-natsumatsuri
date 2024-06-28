@@ -4,5 +4,5 @@ import {ArticleModel} from "./article-model";
 
 export class PageModel extends Model {
   public article: ArticleModel;
-  public image: Sprite;
+  public illustrate: Sprite;
 }

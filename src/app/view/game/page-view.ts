@@ -12,7 +12,7 @@ import {ResourceController} from "../../controller/resource-controller";
 export class PageView extends View {
 
   private sentences: SentenceModel[];
-  private images: PIXI.Sprite[];
+  private illustrate: PIXI.Sprite;
 
   constructor() {
     super();
@@ -22,8 +22,8 @@ export class PageView extends View {
     this.sentences = sentences;
   }
 
-  public initImages(images: PIXI.Sprite[]) {
-    this.images = images;
+  public initImages(images: PIXI.Sprite) {
+    this.illustrate = images;
   }
 
 
@@ -259,16 +259,20 @@ export class PageView extends View {
     //
     // articleVew.play();
 
+
+
     const resourceController = new ResourceController();
     await resourceController.load();
   }
 
-  public test2(article: ArticleModel) {
+  public test2(article: ArticleModel, illustrate: PIXI.Sprite) {
     const articleVew = new ArticleView(article);
     articleVew.init();
     this.addChild(articleVew);
 
     articleVew.play();
+
+    this.addChild(illustrate);
   }
 
 }

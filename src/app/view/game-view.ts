@@ -8,7 +8,7 @@ import {TouchSprite} from './game/touch-sprite';
 import {PageView} from "./game/page-view";
 
 export class GameView extends View {
-  private battleView: PageView;
+  private pageView: PageView;
   private touchSprite: TouchSprite;
 
   public static FLICKER_VIEW_HEIGHT = 300;
@@ -20,12 +20,12 @@ export class GameView extends View {
   public init() {
     this.background = new Background(PIXI.Texture.WHITE, 0xf9f1e1);
 
-    this.battleView = bottle.singleton(PageView);
-    this.battleView.size = new Size(this.size.width, this.size.height - GameView.FLICKER_VIEW_HEIGHT);
-    this.battleView.background = new Background(PIXI.Texture.WHITE, 0xffffff);
-    this.battleView.y = 0;
-    this.battleView.initUI();
-    this.addChild(this.battleView);
+    this.pageView = bottle.singleton(PageView);
+    this.pageView.size = new Size(this.size.width, this.size.height - GameView.FLICKER_VIEW_HEIGHT);
+    this.pageView.background = new Background(PIXI.Texture.WHITE, 0xffffff);
+    this.pageView.y = 0;
+    this.pageView.initUI();
+    this.addChild(this.pageView);
 
     // this.touchSprite = bottle.singleton(TouchSprite);
     // this.touchSprite.width = this.width;

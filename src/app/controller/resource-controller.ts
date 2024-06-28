@@ -1,6 +1,7 @@
+import * as PIXI from 'pixi.js';
 import {Controller} from "../../framework/controller";
-import book from '../../assets/data/book.json';
-import images from '../../assets/images/*.png';
+import game from '../../assets/data/game.json';
+import illustrate from '../../assets/images/*.png';
 import voices from '../../assets/voices/*.wav';
 import {PageView} from "../view/game/page-view";
 import bottle from "../../framework/bottle";
@@ -8,17 +9,20 @@ import {PageModel} from "../model/page-model";
 import {ArticleModel} from "../model/article-model";
 import {SentenceModel} from "../model/sentence-model";
 import {VoiceResource} from "../storage/voice-resource";
+import {BookModel} from "../model/book-model";
+import {IllustrateResource} from "../storage/illustrate-resource";
 
 export class ResourceController extends Controller {
   private pageView: PageView = bottle.inject(PageView);
+  private illustrateResource: any = bottle.inject(IllustrateResource);
   private voiceResource: VoiceResource = bottle.inject(VoiceResource);
 
 
   constructor() {
     super();
 
-    console.log(book);
-    console.log(images);
+    console.log(game);
+    console.log(illustrate);
     console.log(voices);
   }
 
@@ -38,27 +42,64 @@ export class ResourceController extends Controller {
       }
     }
 
+    for (let key in illustrate) {
+      if (illustrate.hasOwnProperty(key)) {
+        console.log(key + " -> " + illustrate[key]);
 
-    ///
-    // this.pageView.test2();
-    const page = new PageModel();
+        // @ts-ignore
+        const url = new URL(illustrate[key], import.meta.url);
+        const sprite = PIXI.Sprite.from(url.href);
 
-    const article = new ArticleModel();
-
-    for (let i = 0; i < book.pages.length; i++) {
-      for (let j = 0; j < book.pages[i].sentences.length; j++) {
-        const sentence = new SentenceModel();
-        sentence.text = book.pages[i].sentences[j].text;
-
-        // TODO: check existed
-        sentence.voice = this.voiceResource.get(book.pages[i].sentences[j].voice);
-        article.sentences.push(sentence);
+        this.illustrateResource.set(key, sprite);
       }
     }
 
-    page.article = article;
 
-    this.pageView.test2(article);
+    ///
+    // this.pageView.test2();
+    const book = new BookModel();
+
+    console.log(game);
+
+    for (let i = 0; i < game.book.pages.length; i++) {
+      const page = new PageModel();
+      page.illustrate = this.illustrateResource.get(game.book.pages[i].illustrate);
+
+      const article = new ArticleModel();
+
+      for (let j = 0; j < game.book.pages[i].article.sentences.length; j++) {
+        const sentence = new SentenceModel();
+        sentence.text = game.book.pages[i].article.sentences[j].text;
+        sentence.voice = this.voiceResource.get(game.book.pages[i].article.sentences[j].voice);
+
+        article.sentences.push(sentence);
+      }
+
+      page.article = article;
+
+      book.pages.push(page);
+    }
+
+    // const article = new ArticleModel();
+
+    // for (let i = 0; i < game.pages.length; i++) {
+    //   for (let j = 0; j < game.pages[i].sentences.length; j++) {
+    //     const sentence = new SentenceModel();
+    //     sentence.text = game.pages[i].sentences[j].text;
+    //
+    //     // TODO: check existed
+    //     sentence.voice = this.voiceResource.get(game.pages[i].sentences[j].voice);
+    //     article.sentences.push(sentence);
+    //   }
+    // }
+    //
+    // page.article = article;
+
+    this.pageView.test2(book.pages[0].article, book.pages[0].illustrate)
+  }
+
+  async loadVoice() {
+
   }
 
   loadAudio(audioElm: HTMLAudioElement) {
