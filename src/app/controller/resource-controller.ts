@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import {Controller} from "../../framework/controller";
 import game from '../../assets/data/game.json';
-import illustrate from '../../assets/images/*.png';
+import illustrations from '../../assets/images/*.png';
 import voices from '../../assets/voices/*.wav';
 import {PageView} from "../view/game/page-view";
 import bottle from "../../framework/bottle";
@@ -10,11 +10,11 @@ import {ArticleModel} from "../model/article-model";
 import {SentenceModel} from "../model/sentence-model";
 import {VoiceResource} from "../storage/voice-resource";
 import {BookModel} from "../model/book-model";
-import {IllustrateResource} from "../storage/illustrate-resource";
+import {IllustrationResource} from "../storage/illustration-resource";
 
 export class ResourceController extends Controller {
   private pageView: PageView = bottle.inject(PageView);
-  private illustrateResource: any = bottle.inject(IllustrateResource);
+  private illustrationResource: any = bottle.inject(IllustrationResource);
   private voiceResource: VoiceResource = bottle.inject(VoiceResource);
 
 
@@ -22,7 +22,7 @@ export class ResourceController extends Controller {
     super();
 
     console.log(game);
-    console.log(illustrate);
+    console.log(illustrations);
     console.log(voices);
   }
 
@@ -42,15 +42,15 @@ export class ResourceController extends Controller {
       }
     }
 
-    for (let key in illustrate) {
-      if (illustrate.hasOwnProperty(key)) {
-        console.log(key + " -> " + illustrate[key]);
+    for (let key in illustrations) {
+      if (illustrations.hasOwnProperty(key)) {
+        console.log(key + " -> " + illustrations[key]);
 
         // @ts-ignore
-        const url = new URL(illustrate[key], import.meta.url);
+        const url = new URL(illustrations[key], import.meta.url);
         const sprite = PIXI.Sprite.from(url.href);
 
-        this.illustrateResource.set(key, sprite);
+        this.illustrationResource.set(key, sprite);
       }
     }
 
@@ -63,7 +63,7 @@ export class ResourceController extends Controller {
 
     for (let i = 0; i < game.book.pages.length; i++) {
       const page = new PageModel();
-      page.illustrate = this.illustrateResource.get(game.book.pages[i].illustrate);
+      page.illustration = this.illustrationResource.get(game.book.pages[i].illustration);
 
       const article = new ArticleModel();
 
@@ -95,10 +95,14 @@ export class ResourceController extends Controller {
     //
     // page.article = article;
 
-    this.pageView.test2(book.pages[0].article, book.pages[0].illustrate)
+    this.pageView.test2(book.pages[0].article, book.pages[0].illustration)
   }
 
-  async loadVoice() {
+  async loadVoices() {
+
+  }
+
+  async loadIllustrations() {
 
   }
 

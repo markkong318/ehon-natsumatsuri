@@ -5,14 +5,14 @@ import {Storage} from './storage/storage';
 import bottle from '../framework/bottle';
 import {MainController} from './controller/main-controller';
 import {VoiceResource} from "./storage/voice-resource";
-import {IllustrateResource} from "./storage/illustrate-resource";
+import {IllustrationResource} from "./storage/illustration-resource";
 
 export class GameApplication extends Application {
   private mainController: MainController;
   private gameView: GameView;
   private storage: Storage;
   private voiceResource: VoiceResource;
-  private illustrateResource: IllustrateResource;
+  private illustrateResource: IllustrationResource;
 
   constructor(options?) {
     super(options);
@@ -31,7 +31,7 @@ export class GameApplication extends Application {
     bottle.setObject(this.renderer);
 
     this.voiceResource = bottle.singleton(VoiceResource);
-    this.illustrateResource = bottle.singleton(IllustrateResource);
+    this.illustrateResource = bottle.singleton(IllustrationResource);
     this.storage = bottle.singleton(Storage);
 
     const viewWidth = 480;

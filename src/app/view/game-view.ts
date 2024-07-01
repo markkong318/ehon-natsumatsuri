@@ -24,7 +24,7 @@ export class GameView extends View {
     this.pageView.size = new Size(this.size.width, this.size.height - GameView.FLICKER_VIEW_HEIGHT);
     this.pageView.background = new Background(PIXI.Texture.WHITE, 0xffffff);
     this.pageView.y = 0;
-    this.pageView.initUI();
+    this.pageView.init();
     this.addChild(this.pageView);
 
     // this.touchSprite = bottle.singleton(TouchSprite);

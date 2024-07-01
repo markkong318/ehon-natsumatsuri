@@ -7,12 +7,12 @@ import { gsap } from 'gsap';
 import {ArticleModel} from "../../model/article-model";
 import {ArticleView} from "./article-view";
 import {ResourceController} from "../../controller/resource-controller";
-// import voice from '../../../assets/voices/test.wav';
 
 export class PageView extends View {
 
   private sentences: SentenceModel[];
-  private illustrate: PIXI.Sprite;
+  private illustration: PIXI.Sprite;
+  private nextBtn: PIXI.Text;
 
   constructor() {
     super();
@@ -22,12 +22,12 @@ export class PageView extends View {
     this.sentences = sentences;
   }
 
-  public initImages(images: PIXI.Sprite) {
-    this.illustrate = images;
+  public initImages(illustration: PIXI.Sprite) {
+    this.illustration = illustration;
   }
 
 
-  public async initUI() {
+  public async init() {
     // this.battleTexture = bottle.singleton(BattleTexture);
     //
     // this.baseY = (this.height - this.baseHeight) / 2;
@@ -265,14 +265,22 @@ export class PageView extends View {
     await resourceController.load();
   }
 
-  public test2(article: ArticleModel, illustrate: PIXI.Sprite) {
+  public async fadeInIllustration() {
+
+  }
+
+  public async fadeOutIllustration() {
+
+  }
+
+  public test2(article: ArticleModel, illustration: PIXI.Sprite) {
     const articleVew = new ArticleView(article);
     articleVew.init();
     this.addChild(articleVew);
 
     articleVew.play();
 
-    this.addChild(illustrate);
+    this.addChild(illustration);
   }
 
 }
