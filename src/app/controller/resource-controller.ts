@@ -20,43 +20,12 @@ export class ResourceController extends Controller {
 
   constructor() {
     super();
-
-    console.log(game);
-    console.log(illustrations);
-    console.log(voices);
   }
 
   async load() {
-    for (let key in voices) {
-      if (voices.hasOwnProperty(key)) {
-        console.log(key + " -> " + voices[key]);
+    await this.loadVoices();
+    await this.loadIllustrations();
 
-        // @ts-ignore
-        const url = new URL(voices[key], import.meta.url);
-        const audioElm = new Audio(url.href);
-        audioElm.preload = "auto";
-
-        await this.loadAudio(audioElm);
-
-        this.voiceResource.set(key, audioElm);
-      }
-    }
-
-    for (let key in illustrations) {
-      if (illustrations.hasOwnProperty(key)) {
-        console.log(key + " -> " + illustrations[key]);
-
-        // @ts-ignore
-        const url = new URL(illustrations[key], import.meta.url);
-        const sprite = PIXI.Sprite.from(url.href);
-
-        this.illustrationResource.set(key, sprite);
-      }
-    }
-
-
-    ///
-    // this.pageView.test2();
     const book = new BookModel();
 
     console.log(game);
@@ -80,30 +49,38 @@ export class ResourceController extends Controller {
       book.pages.push(page);
     }
 
-    // const article = new ArticleModel();
-
-    // for (let i = 0; i < game.pages.length; i++) {
-    //   for (let j = 0; j < game.pages[i].sentences.length; j++) {
-    //     const sentence = new SentenceModel();
-    //     sentence.text = game.pages[i].sentences[j].text;
-    //
-    //     // TODO: check existed
-    //     sentence.voice = this.voiceResource.get(game.pages[i].sentences[j].voice);
-    //     article.sentences.push(sentence);
-    //   }
-    // }
-    //
-    // page.article = article;
-
-    this.pageView.test2(book.pages[0].article, book.pages[0].illustration)
+    this.pageView.setAssets(book.pages[0].article, book.pages[0].illustration)
   }
 
   async loadVoices() {
+    for (let key in voices) {
+      if (voices.hasOwnProperty(key)) {
+        console.log(key + " -> " + voices[key]);
 
+        // @ts-ignore
+        const url = new URL(voices[key], import.meta.url);
+        const audioElm = new Audio(url.href);
+        audioElm.preload = "auto";
+
+        await this.loadAudio(audioElm);
+
+        this.voiceResource.set(key, audioElm);
+      }
+    }
   }
 
   async loadIllustrations() {
+    for (let key in illustrations) {
+      if (illustrations.hasOwnProperty(key)) {
+        console.log(key + " -> " + illustrations[key]);
 
+        // @ts-ignore
+        const url = new URL(illustrations[key], import.meta.url);
+        const sprite = PIXI.Sprite.from(url.href);
+
+        this.illustrationResource.set(key, sprite);
+      }
+    }
   }
 
   loadAudio(audioElm: HTMLAudioElement) {

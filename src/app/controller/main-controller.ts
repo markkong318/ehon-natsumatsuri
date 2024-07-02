@@ -1,9 +1,16 @@
 import {Controller} from '../../framework/controller';
+import {ResourceController} from "./resource-controller";
+import bottle from "../../framework/bottle";
+import {PageView} from "../view/game/page-view";
+import {gsap} from "gsap";
 
 export class MainController extends Controller {
-  main() {
-    // this.init();
-    // this.loadStage(0);
-    // this.play();
+
+  private resourceController: ResourceController = bottle.inject(ResourceController);
+  private pageView: PageView = bottle.inject(PageView);
+
+  public async main() {
+    await this.resourceController.load();
+    this.pageView.play(new gsap.core.Timeline());
   }
 }

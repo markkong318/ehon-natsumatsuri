@@ -6,9 +6,11 @@ import bottle from '../framework/bottle';
 import {MainController} from './controller/main-controller';
 import {VoiceResource} from "./storage/voice-resource";
 import {IllustrationResource} from "./storage/illustration-resource";
+import {ResourceController} from "./controller/resource-controller";
 
 export class GameApplication extends Application {
   private mainController: MainController;
+  private resourceController: ResourceController;
   private gameView: GameView;
   private storage: Storage;
   private voiceResource: VoiceResource;
@@ -44,6 +46,8 @@ export class GameApplication extends Application {
     this.stage.addChild(this.gameView);
 
     this.resizeView();
+
+    this.resourceController = bottle.singleton(ResourceController);
 
     this.mainController = bottle.singleton(MainController);
     this.mainController.main();

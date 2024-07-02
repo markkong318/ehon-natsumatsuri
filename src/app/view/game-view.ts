@@ -11,8 +11,6 @@ export class GameView extends View {
   private pageView: PageView;
   private touchSprite: TouchSprite;
 
-  public static FLICKER_VIEW_HEIGHT = 300;
-
   constructor() {
     super();
   }
@@ -21,9 +19,9 @@ export class GameView extends View {
     this.background = new Background(PIXI.Texture.WHITE, 0xf9f1e1);
 
     this.pageView = bottle.singleton(PageView);
-    this.pageView.size = new Size(this.size.width, this.size.height - GameView.FLICKER_VIEW_HEIGHT);
-    this.pageView.background = new Background(PIXI.Texture.WHITE, 0xffffff);
-    this.pageView.y = 0;
+    this.pageView.size = new Size(this.size.width, 800);
+    this.pageView.background = new Background(PIXI.Texture.WHITE, 0x888888);
+    this.pageView.y = (this.size.height - 800) / 2;
     this.pageView.init();
     this.addChild(this.pageView);
 
