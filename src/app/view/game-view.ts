@@ -18,10 +18,12 @@ export class GameView extends View {
   public init() {
     this.background = new Background(PIXI.Texture.WHITE, 0xf9f1e1);
 
+    const height = 700
+
     this.pageView = bottle.singleton(PageView);
-    this.pageView.size = new Size(this.size.width, 800);
+    this.pageView.size = new Size(this.size.width, height);
     this.pageView.background = new Background(PIXI.Texture.WHITE, 0x888888);
-    this.pageView.y = (this.size.height - 800) / 2;
+    this.pageView.y = (this.size.height - height) / 2;
     this.pageView.init();
     this.addChild(this.pageView);
 

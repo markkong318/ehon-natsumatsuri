@@ -1,1 +1,1 @@
-export const EVENT_SEND_KEY = 'event_send_key';
+export const EVENT_NEXT_PAGE = 'EVENT_NEXT_PAGE';

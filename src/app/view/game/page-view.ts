@@ -5,6 +5,8 @@ import {ArticleModel} from "../../model/article-model";
 import {ArticleView} from "./component/article-view";
 import {gsap} from "gsap";
 import {TextStyle} from "../../style/text-style";
+import {EVENT_NEXT_PAGE} from "../../env/event";
+import rocket from "../../../framework/rocket";
 
 export class PageView extends View {
 
@@ -55,6 +57,8 @@ export class PageView extends View {
     this.nextBtn.x = 0;
     this.nextBtn.y = this.height - this.nextBtn.height;
     this.nextBtn.alpha = 0;
+    this.nextBtn.interactive = true;
+    this.nextBtn.on('pointerdown', () => rocket.emit(EVENT_NEXT_PAGE));
     this.addChild(this.nextBtn);
   }
 

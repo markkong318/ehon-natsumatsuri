@@ -19,6 +19,25 @@
           ]
         },
         "illustration": "img"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "2テストテストテスト",
+              "voice": "test"
+            },
+            {
+              "text": "2テストテストテスト",
+              "voice": "test"
+            },
+            {
+              "text": "2テストテストテスト",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "img"
       }
     ]
   }
