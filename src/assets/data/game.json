@@ -1,5 +1,8 @@
 {
   "book": {
+    "cover": {
+      "title": "テスト"
+    },
     "pages": [
       {
         "article": {

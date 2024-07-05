@@ -1,11 +1,11 @@
-import {Controller} from '../../framework/controller';
-import {ResourceController} from "./resource-controller";
-import bottle from "../../framework/bottle";
-import rocket from "../../framework/rocket";
-import {PageView} from "../view/game/page-view";
 import {gsap} from "gsap";
+import bottle from "../../framework/bottle";
+import {Controller} from '../../framework/controller';
+import rocket from "../../framework/rocket";
 import {EVENT_NEXT_PAGE} from "../env/event";
 import {BookModel} from "../model/book-model";
+import {PageView} from "../view/game/page-view";
+import {ResourceController} from "./resource-controller";
 
 export class MainController extends Controller {
 
@@ -26,7 +26,7 @@ export class MainController extends Controller {
 
     this.nextPage();
 
-    this.pageView.play(this.tl);
+    // this.pageView.play(this.tl);
   }
 
   private async initEvent() {

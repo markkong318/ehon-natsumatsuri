@@ -5,13 +5,13 @@ import {gsap} from "gsap";
 
 export class ArticleView extends View {
 
-  private article: ArticleModel;
+  private articleModel: ArticleModel;
 
   private sentenceViews: SentenceView[] = [];
 
-  constructor(article: ArticleModel) {
+  constructor(articleModel: ArticleModel) {
     super();
-    this.article = article;
+    this.articleModel = articleModel;
   }
 
   public init() {
@@ -19,8 +19,8 @@ export class ArticleView extends View {
 
     let y = 0;
 
-    for (let i = 0; i < this.article.sentences.length; i++) {
-      const view = new SentenceView(this.article.sentences[i].text, this.article.sentences[i].voice);
+    for (let i = 0; i < this.articleModel.sentences.length; i++) {
+      const view = new SentenceView(this.articleModel.sentences[i].text, this.articleModel.sentences[i].voice);
       view.init();
       view.x = 0;
       view.y = y;
@@ -33,7 +33,7 @@ export class ArticleView extends View {
   }
 
   public play(tl: gsap.core.Timeline) {
-    for (let i = 0; i < this.article.sentences.length; i++) {
+    for (let i = 0; i < this.articleModel.sentences.length; i++) {
       this.sentenceViews[i].play(tl);
     }
   }

@@ -1,12 +1,11 @@
-import * as PIXI from 'pixi.js';
-
-import {View} from '../../../framework/view';
-import {ArticleModel} from "../../model/article-model";
-import {ArticleView} from "./component/article-view";
 import {gsap} from "gsap";
-import {TextStyle} from "../../style/text-style";
-import {EVENT_NEXT_PAGE} from "../../env/event";
+import * as PIXI from 'pixi.js';
 import rocket from "../../../framework/rocket";
+import {View} from '../../../framework/view';
+import {EVENT_NEXT_PAGE} from "../../env/event";
+import {ArticleModel} from "../../model/article-model";
+import {TextStyle} from "../../style/text-style";
+import {ArticleView} from "./component/article-view";
 
 export class PageView extends View {
 
@@ -26,15 +25,11 @@ export class PageView extends View {
     tl.to(this.illustration, {alpha: 1, duration: 1});
   }
 
-  public fadeOutIllustration(tl: gsap.core.Timeline) {
-    tl.to(this.illustration, {alpha: 0, duration: 1});
-  }
-
   public fadeInNextBtn(tl: gsap.core.Timeline) {
     tl.to(this.nextBtn, {alpha: 1, duration: 1});
   }
 
-  public setAssets(article: ArticleModel, illustration: PIXI.Sprite) {
+  public setAssets(articleModel: ArticleModel, illustration: PIXI.Sprite) {
 
     if (this.illustration != null) {
       this.removeChild(this.illustration);
@@ -44,11 +39,15 @@ export class PageView extends View {
       this.removeChild(this.articleView);
     }
 
+    if (this.nextBtn != null) {
+      this.removeChild(this.nextBtn);
+    }
+
     this.illustration = illustration;
     this.illustration.alpha = 0;
     this.addChild(illustration);
 
-    this.articleView = new ArticleView(article);
+    this.articleView = new ArticleView(articleModel);
     this.articleView.init();
     this.addChild(this.articleView);
 

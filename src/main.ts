@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 import FontFaceObserver from 'fontfaceobserver';
 import gsap from 'gsap';
 import PixiPlugin from 'gsap/PixiPlugin';
+// import css from './assets/fonts/**/style.css';
 
 import {GameApplication} from './app/game-application';
 import * as packageJson from '../package.json';

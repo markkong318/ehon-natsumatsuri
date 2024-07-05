@@ -1,24 +1,24 @@
 import * as PIXI from 'pixi.js';
-import {Controller} from "../../framework/controller";
 import game from '../../assets/data/game.json';
 import illustrations from '../../assets/images/*.png';
 import voices from '../../assets/voices/*.wav';
-import {PageView} from "../view/game/page-view";
 import bottle from "../../framework/bottle";
-import {PageModel} from "../model/page-model";
+import {Controller} from "../../framework/controller";
 import {ArticleModel} from "../model/article-model";
-import {SentenceModel} from "../model/sentence-model";
-import {VoiceResource} from "../storage/voice-resource";
 import {BookModel} from "../model/book-model";
+import {PageModel} from "../model/page-model";
+import {SentenceModel} from "../model/sentence-model";
 import {IllustrationResource} from "../storage/illustration-resource";
+import {VoiceResource} from "../storage/voice-resource";
 import {loadAudio} from "../util/audio";
+import {PageView} from "../view/game/page-view";
 
 export class ResourceController extends Controller {
   private pageView: PageView = bottle.inject(PageView);
   private illustrationResource: any = bottle.inject(IllustrationResource);
   private voiceResource: VoiceResource = bottle.inject(VoiceResource);
 
-  private book: BookModel;
+  private bookModel: BookModel;
 
   constructor() {
     super();
@@ -63,27 +63,27 @@ export class ResourceController extends Controller {
   }
 
   private initBook() {
-    this.book = new BookModel();
+    this.bookModel = new BookModel();
 
     for (let i = 0; i < game.book.pages.length; i++) {
-      const page = new PageModel();
-      page.illustration = this.illustrationResource.get(game.book.pages[i].illustration);
+      const pageModel = new PageModel();
+      pageModel.illustration = this.illustrationResource.get(game.book.pages[i].illustration);
 
-      const article = new ArticleModel();
+      const articleModel = new ArticleModel();
 
       for (let j = 0; j < game.book.pages[i].article.sentences.length; j++) {
-        const sentence = new SentenceModel();
-        sentence.text = game.book.pages[i].article.sentences[j].text;
-        sentence.voice = this.voiceResource.get(game.book.pages[i].article.sentences[j].voice);
+        const sentenceModel = new SentenceModel();
+        sentenceModel.text = game.book.pages[i].article.sentences[j].text;
+        sentenceModel.voice = this.voiceResource.get(game.book.pages[i].article.sentences[j].voice);
 
-        article.sentences.push(sentence);
+        articleModel.sentences.push(sentenceModel);
       }
 
-      page.article = article;
+      pageModel.article = articleModel;
 
-      this.book.pages.push(page);
+      this.bookModel.pages.push(pageModel);
     }
 
-    bottle.setObject(this.book);
+    bottle.setObject(this.bookModel);
   }
 }

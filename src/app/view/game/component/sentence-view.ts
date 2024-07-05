@@ -8,10 +8,8 @@ export class SentenceView extends View {
 
   private readonly text: string;
   private readonly voice: HTMLAudioElement;
-
   private textSprite: PIXI.Text;
   private maskSprite: PIXI.Sprite;
-  private audioElm: HTMLAudioElement;
 
   constructor(text: string, voice: HTMLAudioElement) {
     super();
