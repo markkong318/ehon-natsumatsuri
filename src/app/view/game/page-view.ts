@@ -45,16 +45,20 @@ export class PageView extends View {
 
     this.illustration = illustration;
     this.illustration.alpha = 0;
+    this.illustration.x = 35;
+    this.illustration.y = 230;
     this.addChild(illustration);
 
     this.articleView = new ArticleView(articleModel);
     this.articleView.init();
+    this.articleView.x = 50;
+    this.articleView.y = 50;
     this.addChild(this.articleView);
 
     const style = new TextStyle().get()
     this.nextBtn = new PIXI.Text('次へ', style);
-    this.nextBtn.x = 0;
-    this.nextBtn.y = this.height - this.nextBtn.height;
+    this.nextBtn.x = this.width - this.nextBtn.width - 50;
+    this.nextBtn.y = this.height - this.nextBtn.height - 20;
     this.nextBtn.alpha = 0;
     this.nextBtn.interactive = true;
     this.nextBtn.on('pointerdown', () => rocket.emit(EVENT_NEXT_PAGE));

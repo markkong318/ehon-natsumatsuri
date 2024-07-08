@@ -15,10 +15,12 @@ export class TextStyle {
       fillGradientStops: [
         0
       ],
-      lineJoin: "round",
+      lineJoin: 'round',
       miterLimit: 6,
       padding: 10,
-      strokeThickness: 4
+      strokeThickness: 4,
+
+      fontFamily: 'corporate-mincho',
     });
   }
 }

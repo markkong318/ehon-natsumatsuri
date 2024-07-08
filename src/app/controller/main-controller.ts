@@ -36,7 +36,7 @@ export class MainController extends Controller {
   }
 
   private async initBook() {
-    this.pageIdx = -1;
+    this.pageIdx = Number.MIN_VALUE;
   }
 
   private nextPage() {

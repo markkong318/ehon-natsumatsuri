@@ -4,10 +4,12 @@ import {View} from '../../framework/view';
 import {Size} from '../../framework/size';
 import bottle from '../../framework/bottle';
 import {Background} from '../../framework/background';
+import {CoverView} from "./game/cover-view";
 import {TouchSprite} from './game/touch-sprite';
 import {PageView} from "./game/page-view";
 
 export class GameView extends View {
+  private coverView: CoverView;
   private pageView: PageView;
   private touchSprite: TouchSprite;
 
@@ -19,6 +21,13 @@ export class GameView extends View {
     this.background = new Background(PIXI.Texture.WHITE, 0xf9f1e1);
 
     const height = 700
+
+    this.coverView = bottle.singleton(CoverView);
+    this.coverView.size = new Size(this.size.width, height);
+    this.coverView.background = new Background(PIXI.Texture.WHITE, 0x888888);
+    this.coverView.y = (this.size.height - height) / 2;
+    this.coverView.init();
+    this.addChild(this.coverView);
 
     this.pageView = bottle.singleton(PageView);
     this.pageView.size = new Size(this.size.width, height);
