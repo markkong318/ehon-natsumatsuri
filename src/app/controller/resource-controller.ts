@@ -6,15 +6,14 @@ import bottle from "../../framework/bottle";
 import {Controller} from "../../framework/controller";
 import {ArticleModel} from "../model/article-model";
 import {BookModel} from "../model/book-model";
+import {CoverModel} from "../model/cover-model";
 import {PageModel} from "../model/page-model";
 import {SentenceModel} from "../model/sentence-model";
 import {IllustrationResource} from "../storage/illustration-resource";
 import {VoiceResource} from "../storage/voice-resource";
 import {loadAudio} from "../util/audio";
-import {PageView} from "../view/game/page-view";
 
 export class ResourceController extends Controller {
-  private pageView: PageView = bottle.inject(PageView);
   private illustrationResource: any = bottle.inject(IllustrationResource);
   private voiceResource: VoiceResource = bottle.inject(VoiceResource);
 
@@ -64,6 +63,10 @@ export class ResourceController extends Controller {
 
   private initBook() {
     this.bookModel = new BookModel();
+
+    const coverModel = new CoverModel();
+    coverModel.title = game.book.cover.title;
+    this.bookModel.cover = coverModel;
 
     for (let i = 0; i < game.book.pages.length; i++) {
       const pageModel = new PageModel();

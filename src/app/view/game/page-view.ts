@@ -65,11 +65,14 @@ export class PageView extends View {
     this.addChild(this.nextBtn);
   }
 
-  public play(tl: gsap.core.Timeline) {
+  public play(tl: gsap.core.Timeline, isLast: boolean) {
     this.fadeIn(tl);
     this.fadeInIllustration(tl);
     this.articleView.play(tl);
-    this.fadeInNextBtn(tl);
+
+    if (!isLast) {
+      this.fadeInNextBtn(tl);
+    }
   }
 
   public fadeIn(tl: gsap.core.Timeline) {

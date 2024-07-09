@@ -33,9 +33,9 @@ export class SentenceView extends View {
     this.addChild(this.textSprite);
   }
 
-  play(timeline: gsap.core.Timeline) {
+  play(tl: gsap.core.Timeline) {
     console.log(this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH);
-    timeline.to(this.maskSprite, {
+    tl.to(this.maskSprite, {
       x: this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH,
       duration: this.voice.duration,
       onStart: async function (voice: HTMLAudioElement) {
@@ -43,6 +43,15 @@ export class SentenceView extends View {
         await voice.play();
       },
       onStartParams: [this.voice],
+      onComplete: function (voice: HTMLAudioElement, timeline: gsap.core.Timeline) {
+        if (!voice.ended) {
+          timeline.pause();
+          voice.onended = function() {
+            timeline.resume();
+          }
+        }
+      },
+      onCompleteParams: [this.voice, tl],
     });
   }
 }

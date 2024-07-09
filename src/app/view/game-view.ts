@@ -33,6 +33,7 @@ export class GameView extends View {
     this.pageView.size = new Size(this.size.width, height);
     this.pageView.background = new Background(PIXI.Texture.WHITE, 0x888888);
     this.pageView.y = (this.size.height - height) / 2;
+    this.pageView.alpha = 0;
     this.pageView.init();
     this.addChild(this.pageView);
 

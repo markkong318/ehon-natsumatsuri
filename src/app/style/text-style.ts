@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
 export class TextStyle {
-  public get(): PIXI.TextStyle {
+  public get(options?: {}): PIXI.TextStyle {
     return new PIXI.TextStyle({
       dropShadow: true,
       dropShadowAlpha: 0.8,
@@ -21,6 +21,8 @@ export class TextStyle {
       strokeThickness: 4,
 
       fontFamily: 'corporate-mincho',
+
+      ...options,
     });
   }
 }
