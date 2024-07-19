@@ -17,7 +17,7 @@ export default new class Bottle {
   }
 
   getObject(obj: any, key?: string) {
-    if (!obj.name) {
+    if (obj && !obj.name) {
       throw new Error('Argument is not a class');
     }
 

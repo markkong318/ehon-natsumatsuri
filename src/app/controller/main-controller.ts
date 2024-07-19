@@ -14,6 +14,7 @@ export class MainController extends Controller {
   private bookModel: BookModel = bottle.inject(BookModel);
   private coverView: CoverView = bottle.inject(CoverView);
   private pageView: PageView = bottle.inject(PageView);
+  private audioContext: AudioContext = bottle.inject(null, {key: 'AudioContext'});
 
   private pageIdx: number = 0;
   private tl: gsap.core.Timeline;
@@ -34,7 +35,7 @@ export class MainController extends Controller {
   }
 
   private async initEvent() {
-    rocket.on(EVENT_NEXT_PAGE, () => {
+    rocket.on(EVENT_NEXT_PAGE, async () => {
       this.nextPage();
     });
   }

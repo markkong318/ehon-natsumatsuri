@@ -31,19 +31,40 @@ export class ResourceController extends Controller {
   }
 
   private async loadVoices() {
+    // for (let key in voices) {
+    //   if (voices.hasOwnProperty(key)) {
+    //     console.log(key + " -> " + voices[key]);
+    //
+    //     // @ts-ignore
+    //     const url = new URL(voices[key], import.meta.url);
+    //     const audioElm = new Audio(url.href);
+    //     audioElm.preload = "auto";
+    //
+    //     await loadAudio(audioElm);
+    //
+    //     this.voiceResource.set(key, audioElm);
+    //   }
+    // }
+    // @ts-ignore
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    bottle.set('AudioContext', audioContext);
+
     for (let key in voices) {
-      if (voices.hasOwnProperty(key)) {
-        console.log(key + " -> " + voices[key]);
-
-        // @ts-ignore
-        const url = new URL(voices[key], import.meta.url);
-        const audioElm = new Audio(url.href);
-        audioElm.preload = "auto";
-
-        await loadAudio(audioElm);
-
-        this.voiceResource.set(key, audioElm);
+      if (!voices.hasOwnProperty(key)) {
+        continue;
       }
+
+      console.log(key + " -> " + voices[key]);
+
+      // @ts-ignore
+      const url = new URL(voices[key], import.meta.url);
+
+      const response = await fetch(url.href);
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+      this.voiceResource.set(key, audioBuffer);
     }
   }
 
