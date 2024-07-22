@@ -3,11 +3,12 @@ import * as PIXI from "pixi.js";
 import bottle from "../../../framework/bottle";
 import rocket from "../../../framework/rocket";
 import {View} from "../../../framework/view";
+import {BOTTLE_AUDIO_CONTEXT} from "../../env/bottle";
 import {EVENT_NEXT_PAGE} from "../../env/event";
 import {TextStyle} from "../../style/text-style";
 
 export class CoverView extends View {
-  private audioContext: AudioContext = bottle.inject(null, {key: 'AudioContext'});
+  private audioContext: AudioContext = bottle.inject(BOTTLE_AUDIO_CONTEXT);
   private title: PIXI.Text;
   private nextBtn: PIXI.Text;
 

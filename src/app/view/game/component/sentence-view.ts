@@ -1,5 +1,6 @@
 import bottle from "../../../../framework/bottle";
 import {View} from "../../../../framework/view";
+import {BOTTLE_AUDIO_CONTEXT} from "../../../env/bottle";
 import {MaskSprite} from "../../../sprite/mask-sprite";
 import * as PIXI from "pixi.js";
 import {gsap} from "gsap";
@@ -9,7 +10,7 @@ export class SentenceView extends View {
 
   private readonly text: string;
   private readonly voice: AudioBuffer;
-  private audioContext: AudioContext = bottle.inject(null, {key: 'AudioContext'});
+  private audioContext: AudioContext = bottle.inject(BOTTLE_AUDIO_CONTEXT);
   private textSprite: PIXI.Text;
   private maskSprite: PIXI.Sprite;
 

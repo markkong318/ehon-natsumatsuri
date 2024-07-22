@@ -29,7 +29,7 @@ export class GameApplication extends Application {
     this.initScene();
   }
 
-  public initScene(): void {
+  public async initScene() {
     bottle.setObject(this.renderer);
 
     this.voiceResource = bottle.singleton(VoiceResource);
@@ -50,7 +50,7 @@ export class GameApplication extends Application {
     this.resourceController = bottle.singleton(ResourceController);
 
     this.mainController = bottle.singleton(MainController);
-    this.mainController.main();
+    await this.mainController.main();
   }
 
   public getViewHeight(viewWidth) {

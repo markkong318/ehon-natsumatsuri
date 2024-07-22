@@ -2,6 +2,7 @@ import {gsap} from "gsap";
 import bottle from "../../framework/bottle";
 import {Controller} from '../../framework/controller';
 import rocket from "../../framework/rocket";
+import {BOTTLE_AUDIO_CONTEXT} from "../env/bottle";
 import {EVENT_NEXT_PAGE} from "../env/event";
 import {BookModel} from "../model/book-model";
 import {CoverView} from "../view/game/cover-view";
@@ -14,7 +15,7 @@ export class MainController extends Controller {
   private bookModel: BookModel = bottle.inject(BookModel);
   private coverView: CoverView = bottle.inject(CoverView);
   private pageView: PageView = bottle.inject(PageView);
-  private audioContext: AudioContext = bottle.inject(null, {key: 'AudioContext'});
+  private audioContext: AudioContext = bottle.inject(BOTTLE_AUDIO_CONTEXT);
 
   private pageIdx: number = 0;
   private tl: gsap.core.Timeline;

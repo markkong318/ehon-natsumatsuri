@@ -17,6 +17,10 @@ export default new class Bottle {
   }
 
   getObject(obj: any, key?: string) {
+    if (typeof obj === 'string') {
+      return this.get(obj);
+    }
+
     if (obj && !obj.name) {
       throw new Error('Argument is not a class');
     }
@@ -42,10 +46,8 @@ export default new class Bottle {
     return this.map.get(key);
   }
 
-  inject(srcClass: { new(...any): any }, options?: { key?: string }): any {
-    const {key} = options || {};
-
-    const func = () => this.getObject(srcClass, key);
+  inject(srcClass: { new(...any): any } | string): any {
+    const func = () => this.getObject(srcClass);
     func.bottle = true;
 
     return func;

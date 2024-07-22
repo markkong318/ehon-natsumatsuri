@@ -4,6 +4,7 @@ import illustrations from '../../assets/images/*.png';
 import voices from '../../assets/voices/*.wav';
 import bottle from "../../framework/bottle";
 import {Controller} from "../../framework/controller";
+import {BOTTLE_AUDIO_CONTEXT} from "../env/bottle";
 import {ArticleModel} from "../model/article-model";
 import {BookModel} from "../model/book-model";
 import {CoverModel} from "../model/cover-model";
@@ -48,7 +49,7 @@ export class ResourceController extends Controller {
     // @ts-ignore
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    bottle.set('AudioContext', audioContext);
+    bottle.set(BOTTLE_AUDIO_CONTEXT, audioContext);
 
     for (let key in voices) {
       if (!voices.hasOwnProperty(key)) {
