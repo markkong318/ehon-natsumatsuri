@@ -6,7 +6,6 @@ import {gsap} from "gsap";
 export class ArticleView extends View {
 
   private articleModel: ArticleModel;
-
   private sentenceViews: SentenceView[] = [];
 
   constructor(articleModel: ArticleModel) {

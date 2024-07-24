@@ -1,5 +1,6 @@
 {
   "book": {
+    "color": "0xffffff",
     "cover": {
       "title": "テスト"
     },

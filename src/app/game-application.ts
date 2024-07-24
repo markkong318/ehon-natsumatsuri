@@ -18,14 +18,6 @@ export class GameApplication extends Application {
 
   constructor(options?) {
     super(options);
-    this.preload();
-  }
-
-  public preload(): void {
-    this.onAssetsLoaded()
-  }
-
-  public onAssetsLoaded(): void {
     this.initScene();
   }
 
@@ -48,8 +40,8 @@ export class GameApplication extends Application {
     this.resizeView();
 
     this.resourceController = bottle.singleton(ResourceController);
-
     this.mainController = bottle.singleton(MainController);
+
     await this.mainController.main();
   }
 

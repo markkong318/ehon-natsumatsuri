@@ -4,11 +4,13 @@ import {View} from '../../framework/view';
 import {Size} from '../../framework/size';
 import bottle from '../../framework/bottle';
 import {Background} from '../../framework/background';
+import {BookModel} from "../model/book-model";
 import {CoverView} from "./game/cover-view";
 import {TouchSprite} from './game/touch-sprite';
 import {PageView} from "./game/page-view";
 
 export class GameView extends View {
+  private bookModel: BookModel = bottle.inject(BookModel);
   private coverView: CoverView;
   private pageView: PageView;
   private touchSprite: TouchSprite;
@@ -17,6 +19,11 @@ export class GameView extends View {
     super();
   }
 
+  public showLoadingView() {
+
+  }
+
+  //TODO: showGameView
   public init() {
     this.background = new Background(PIXI.Texture.WHITE, 0xf9f1e1);
 

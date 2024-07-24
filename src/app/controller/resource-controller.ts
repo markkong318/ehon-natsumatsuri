@@ -12,7 +12,6 @@ import {PageModel} from "../model/page-model";
 import {SentenceModel} from "../model/sentence-model";
 import {IllustrationResource} from "../storage/illustration-resource";
 import {VoiceResource} from "../storage/voice-resource";
-import {loadAudio} from "../util/audio";
 
 export class ResourceController extends Controller {
   private illustrationResource: any = bottle.inject(IllustrationResource);
@@ -32,20 +31,6 @@ export class ResourceController extends Controller {
   }
 
   private async loadVoices() {
-    // for (let key in voices) {
-    //   if (voices.hasOwnProperty(key)) {
-    //     console.log(key + " -> " + voices[key]);
-    //
-    //     // @ts-ignore
-    //     const url = new URL(voices[key], import.meta.url);
-    //     const audioElm = new Audio(url.href);
-    //     audioElm.preload = "auto";
-    //
-    //     await loadAudio(audioElm);
-    //
-    //     this.voiceResource.set(key, audioElm);
-    //   }
-    // }
     // @ts-ignore
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -85,6 +70,7 @@ export class ResourceController extends Controller {
 
   private initBook() {
     this.bookModel = new BookModel();
+    this.bookModel.color = parseInt(game.book.color, 16);
 
     const coverModel = new CoverModel();
     coverModel.title = game.book.cover.title;

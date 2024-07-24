@@ -2,8 +2,8 @@ import {gsap} from "gsap";
 import bottle from "../../framework/bottle";
 import {Controller} from '../../framework/controller';
 import rocket from "../../framework/rocket";
-import {BOTTLE_AUDIO_CONTEXT} from "../env/bottle";
 import {EVENT_NEXT_PAGE} from "../env/event";
+import {PAGE_NUMBER_COVER, PAGE_NUMBER_INITIAL} from "../env/game";
 import {BookModel} from "../model/book-model";
 import {CoverView} from "../view/game/cover-view";
 import {PageView} from "../view/game/page-view";
@@ -15,14 +15,9 @@ export class MainController extends Controller {
   private bookModel: BookModel = bottle.inject(BookModel);
   private coverView: CoverView = bottle.inject(CoverView);
   private pageView: PageView = bottle.inject(PageView);
-  private audioContext: AudioContext = bottle.inject(BOTTLE_AUDIO_CONTEXT);
 
   private pageIdx: number = 0;
   private tl: gsap.core.Timeline;
-
-  public static PAGE_NUMBER_INITIAL = -2;
-  public static PAGE_NUMBER_COVER = -1;
-
 
   public async main() {
     this.tl = new gsap.core.Timeline();
@@ -42,7 +37,7 @@ export class MainController extends Controller {
   }
 
   private async initBook() {
-    this.pageIdx = -2;
+    this.pageIdx = PAGE_NUMBER_INITIAL;
   }
 
   private nextPage() {
@@ -52,7 +47,7 @@ export class MainController extends Controller {
       return;
     }
 
-    if (this.pageIdx === -1) {
+    if (this.pageIdx === PAGE_NUMBER_COVER) {
       this.coverView.setAssets(this.bookModel.cover.title);
       this.coverView.fadeIn(this.tl);
       return;
