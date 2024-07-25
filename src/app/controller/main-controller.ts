@@ -22,8 +22,6 @@ export class MainController extends Controller {
   public async main() {
     this.tl = new gsap.core.Timeline();
 
-    await this.resourceController.load();
-
     await this.initEvent();
     await this.initBook();
 

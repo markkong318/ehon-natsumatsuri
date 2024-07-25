@@ -5,5 +5,6 @@ import {Model} from "../../framework/model";
 export class BookModel extends Model {
     public cover: CoverModel;
     public pages: PageModel[] = [];
-    public color: number;
+    public backgroundColor: number;
+    public fontColor: number;
 }

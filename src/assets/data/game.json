@@ -1,6 +1,8 @@
 {
+  "version": "1.0",
   "book": {
-    "color": "0xffffff",
+    "backgroundColor": "0xffffff",
+    "fontColor": " 0x9DCCE0",
     "cover": {
       "title": "テスト"
     },

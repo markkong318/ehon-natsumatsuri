@@ -70,7 +70,8 @@ export class ResourceController extends Controller {
 
   private initBook() {
     this.bookModel = new BookModel();
-    this.bookModel.color = parseInt(game.book.color, 16);
+    this.bookModel.backgroundColor = parseInt(game.book.backgroundColor, 16);
+    this.bookModel.fontColor = parseInt(game.book.fontColor, 16);
 
     const coverModel = new CoverModel();
     coverModel.title = game.book.cover.title;

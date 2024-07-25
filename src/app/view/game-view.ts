@@ -19,26 +19,21 @@ export class GameView extends View {
     super();
   }
 
-  public showLoadingView() {
-
-  }
-
-  //TODO: showGameView
   public init() {
-    this.background = new Background(PIXI.Texture.WHITE, 0xf9f1e1);
+    this.background = new Background(PIXI.Texture.WHITE, this.bookModel.backgroundColor);
 
     const height = 700
 
     this.coverView = bottle.singleton(CoverView);
     this.coverView.size = new Size(this.size.width, height);
-    this.coverView.background = new Background(PIXI.Texture.WHITE, 0x888888);
+    this.coverView.background = new Background(PIXI.Texture.WHITE, this.bookModel.backgroundColor);
     this.coverView.y = (this.size.height - height) / 2;
     this.coverView.init();
     this.addChild(this.coverView);
 
     this.pageView = bottle.singleton(PageView);
     this.pageView.size = new Size(this.size.width, height);
-    this.pageView.background = new Background(PIXI.Texture.WHITE, 0x888888);
+    this.pageView.background = new Background(PIXI.Texture.WHITE, this.bookModel.backgroundColor);
     this.pageView.y = (this.size.height - height) / 2;
     this.pageView.alpha = 0;
     this.pageView.init();

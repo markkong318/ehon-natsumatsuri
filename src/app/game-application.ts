@@ -1,3 +1,4 @@
+import {View} from "../framework/view";
 import {GameView} from './view/game-view';
 import {Application} from '../framework/application';
 import {Size} from '../framework/size';
@@ -7,10 +8,12 @@ import {MainController} from './controller/main-controller';
 import {VoiceResource} from "./storage/voice-resource";
 import {IllustrationResource} from "./storage/illustration-resource";
 import {ResourceController} from "./controller/resource-controller";
+import {LoadingView} from "./view/loading-view";
 
 export class GameApplication extends Application {
   private mainController: MainController;
   private resourceController: ResourceController;
+  private loadingView: LoadingView;
   private gameView: GameView;
   private storage: Storage;
   private voiceResource: VoiceResource;
@@ -18,10 +21,10 @@ export class GameApplication extends Application {
 
   constructor(options?) {
     super(options);
-    this.initScene();
+    this.initLoading();
   }
 
-  public async initScene() {
+  public async initLoading() {
     bottle.setObject(this.renderer);
 
     this.voiceResource = bottle.singleton(VoiceResource);
@@ -31,15 +34,32 @@ export class GameApplication extends Application {
     const viewWidth = 480;
     const viewHeight = this.getViewHeight(viewWidth);
 
+    this.loadingView = bottle.singleton(LoadingView);
+    this.loadingView.size = new Size(viewWidth, viewHeight);
+    this.loadingView.init();
+
+    this.stage.addChild(this.loadingView);
+
+    this.resizeView(this.loadingView);
+
+    this.resourceController = bottle.singleton(ResourceController);
+    await this.resourceController.load();
+
+    await this.initScene();
+  }
+
+  private async initScene() {
+    const viewWidth = 480;
+    const viewHeight = this.getViewHeight(viewWidth);
+
     this.gameView = bottle.singleton(GameView);
     this.gameView.size = new Size(viewWidth, viewHeight);
     this.gameView.init();
 
     this.stage.addChild(this.gameView);
 
-    this.resizeView();
+    this.resizeView(this.gameView);
 
-    this.resourceController = bottle.singleton(ResourceController);
     this.mainController = bottle.singleton(MainController);
 
     await this.mainController.main();
@@ -53,23 +73,23 @@ export class GameApplication extends Application {
     }
   }
 
-  public resizeView(): void {
+  public resizeView(view: View): void {
     if (this.renderer.width > this.renderer.height) {
-      const scale = Math.min(this.renderer.width / this.gameView.size.width, this.renderer.height / this.gameView.size.height) / this.renderer.resolution;
+      const scale = Math.min(this.renderer.width / view.size.width, this.renderer.height / view.size.height) / this.renderer.resolution;
 
-      this.gameView.scale.x = scale;
-      this.gameView.scale.y = scale;
+      view.scale.x = scale;
+      view.scale.y = scale;
 
-      this.gameView.x = (this.renderer.width - this.gameView.size.width * scale * this.renderer.resolution) / 2 / this.renderer.resolution;
-      this.gameView.y = (this.renderer.height - this.gameView.size.height * scale * this.renderer.resolution) / 2 / this.renderer.resolution;
+      view.x = (this.renderer.width - view.size.width * scale * this.renderer.resolution) / 2 / this.renderer.resolution;
+      view.y = (this.renderer.height - view.size.height * scale * this.renderer.resolution) / 2 / this.renderer.resolution;
     } else {
-      const scale = this.renderer.width / this.gameView.size.width / this.renderer.resolution;
+      const scale = this.renderer.width / view.size.width / this.renderer.resolution;
 
-      this.gameView.scale.x = scale;
-      this.gameView.scale.y = scale;
+      view.scale.x = scale;
+      view.scale.y = scale;
 
-      this.gameView.x = 0;
-      this.gameView.y = (this.renderer.height - this.gameView.size.height * scale * this.renderer.resolution) / 2 / this.renderer.resolution;
+      view.x = 0;
+      view.y = (this.renderer.height - view.size.height * scale * this.renderer.resolution) / 2 / this.renderer.resolution;
     }
   }
 }
