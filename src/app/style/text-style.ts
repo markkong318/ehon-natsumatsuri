@@ -25,4 +25,13 @@ export class TextStyle {
       ...options,
     });
   }
+
+  public getWithColor(color: number, options?: {}): PIXI.TextStyle {
+    options = {
+      ...options,
+      dropShadowColor: color,
+      stroke: color,
+    };
+    return this.get(options);
+  }
 }

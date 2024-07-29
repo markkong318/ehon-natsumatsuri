@@ -4,46 +4,164 @@
     "backgroundColor": "0xffffff",
     "fontColor": " 0x9DCCE0",
     "cover": {
-      "title": "テスト"
+      "title": "夏祭り"
     },
     "pages": [
       {
         "article": {
           "sentences": [
             {
-              "text": "19テストテストテスト",
-              "voice": "test"
+              "text": "今日は待ちに待った夏祭り！",
+              "voice": "voice_1_1"
             },
             {
-              "text": "テストテストテスト",
-              "voice": "test"
+              "text": "色とりどりの浴衣を着た子どもたちが",
+              "voice": "voice_1_2"
             },
             {
-              "text": "テストテストテスト",
-              "voice": "test"
+              "text": "笑顔いっぱいで会場に向かいます。",
+              "voice": "voice_1_3"
             }
           ]
         },
-        "illustration": "img"
+        "illustration": "illustration1"
       },
       {
         "article": {
           "sentences": [
             {
-              "text": "2テストテストテスト",
+              "text": "家族みんなでブルーシートを広げて、",
               "voice": "test"
             },
             {
-              "text": "2テストテストテスト",
+              "text": "最高の場所をゲット！",
               "voice": "test"
             },
             {
-              "text": "2テストテストテスト",
+              "text": "みんなでワクワクしながら花火を待ちます。",
               "voice": "test"
             }
           ]
         },
-        "illustration": "img"
+        "illustration": "illustration2"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "公園で線香花火を楽しんでいます。",
+              "voice": "test"
+            },
+            {
+              "text": "小さな火花がキラキラと舞い上がり、",
+              "voice": "test"
+            },
+            {
+              "text": "まるで星が降ってくるみたい！",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "illustration3"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "伝統的な手筒花火が始まります。",
+              "voice": "test"
+            },
+            {
+              "text": "大人たちが勇敢に手筒を持ち上げ、",
+              "voice": "test"
+            },
+            {
+              "text": "みんなの心がドキドキ！",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "illustration4"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "地面に置かれたねずみ花火。",
+              "voice": "test"
+            },
+            {
+              "text": "これからどんな動きを見せるのか、",
+              "voice": "test"
+            },
+            {
+              "text": "みんなの目がキラキラと輝いています。",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "illustration5"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "ねずみ花火に火がつけられ、",
+              "voice": "test"
+            },
+            {
+              "text": "勢いよく回転しながら火花を散らします。",
+              "voice": "test"
+            },
+            {
+              "text": "子どもたちの歓声が夜空に響き渡ります！",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "illustration6"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "夜空に大きな花火が打ち上がり、",
+              "voice": "test"
+            },
+            {
+              "text": "色とりどりの光が広がります。",
+              "voice": "test"
+            },
+            {
+              "text": "『わぁー！』とみんなの目が輝いています。",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "illustration7"
+      },
+      {
+        "article": {
+          "sentences": [
+            {
+              "text": "ゴミを持ち帰るように呼びかける看板。",
+              "voice": "test"
+            },
+            {
+              "text": "子どもたちも協力して、",
+              "voice": "test"
+            },
+            {
+              "text": "きれいな会場を保ちます。",
+              "voice": "test"
+            },
+            {
+              "text": "みんなで楽しい思い出を大切に！",
+              "voice": "test"
+            }
+          ]
+        },
+        "illustration": "illustration8"
       }
     ]
   }

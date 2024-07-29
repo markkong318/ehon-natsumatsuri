@@ -10,6 +10,7 @@ import {TextStyle} from "../../../style/text-style";
 export class SentenceView extends View {
 
   private bookModel: BookModel = bottle.inject(BookModel);
+  private textStyle: TextStyle = bottle.inject(TextStyle);
   private readonly text: string;
   private readonly voice: AudioBuffer;
   private audioContext: AudioContext = bottle.inject(BOTTLE_AUDIO_CONTEXT);
@@ -24,13 +25,13 @@ export class SentenceView extends View {
   }
 
   public init() {
-    const style = new TextStyle().get({fill:[ this.bookModel.fontColor]});
+    const style = this.textStyle.getWithColor(this.bookModel.fontColor);
 
     this.textSprite = new PIXI.Text(this.text, style);
 
     this.maskSprite = new MaskSprite().get();
     this.maskSprite.x = -MaskSprite.WIDTH;
-    this.maskSprite.y = this.textSprite.y;
+    this.maskSprite.y = (this.textSprite.height - this.maskSprite.height) / 2;
 
     this.textSprite.mask = this.maskSprite;
 

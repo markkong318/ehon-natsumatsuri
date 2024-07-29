@@ -1,4 +1,5 @@
 import {View} from "../framework/view";
+import {TextStyle} from "./style/text-style";
 import {GameView} from './view/game-view';
 import {Application} from '../framework/application';
 import {Size} from '../framework/size';
@@ -18,6 +19,7 @@ export class GameApplication extends Application {
   private storage: Storage;
   private voiceResource: VoiceResource;
   private illustrateResource: IllustrationResource;
+  private textStyle: TextStyle;
 
   constructor(options?) {
     super(options);
@@ -27,6 +29,7 @@ export class GameApplication extends Application {
   public async initLoading() {
     bottle.setObject(this.renderer);
 
+    this.textStyle = bottle.singleton(TextStyle);
     this.voiceResource = bottle.singleton(VoiceResource);
     this.illustrateResource = bottle.singleton(IllustrationResource);
     this.storage = bottle.singleton(Storage);
