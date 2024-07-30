@@ -4,7 +4,8 @@
     "backgroundColor": "0xffffff",
     "fontColor": " 0x9DCCE0",
     "cover": {
-      "title": "夏祭り"
+      "title": "夏祭り",
+      "voice": "voice_0"
     },
     "pages": [
       {
@@ -31,15 +32,15 @@
           "sentences": [
             {
               "text": "家族みんなでブルーシートを広げて、",
-              "voice": "test"
+              "voice": "voice_2_1"
             },
             {
               "text": "最高の場所をゲット！",
-              "voice": "test"
+              "voice": "voice_2_2"
             },
             {
               "text": "みんなでワクワクしながら花火を待ちます。",
-              "voice": "test"
+              "voice": "voice_2_3"
             }
           ]
         },
@@ -50,15 +51,15 @@
           "sentences": [
             {
               "text": "公園で線香花火を楽しんでいます。",
-              "voice": "test"
+              "voice": "voice_3_1"
             },
             {
               "text": "小さな火花がキラキラと舞い上がり、",
-              "voice": "test"
+              "voice": "voice_3_2"
             },
             {
               "text": "まるで星が降ってくるみたい！",
-              "voice": "test"
+              "voice": "voice_3_3"
             }
           ]
         },
@@ -69,15 +70,15 @@
           "sentences": [
             {
               "text": "伝統的な手筒花火が始まります。",
-              "voice": "test"
+              "voice": "voice_4_1"
             },
             {
               "text": "大人たちが勇敢に手筒を持ち上げ、",
-              "voice": "test"
+              "voice": "voice_4_2"
             },
             {
               "text": "みんなの心がドキドキ！",
-              "voice": "test"
+              "voice": "voice_4_3"
             }
           ]
         },
@@ -88,15 +89,15 @@
           "sentences": [
             {
               "text": "地面に置かれたねずみ花火。",
-              "voice": "test"
+              "voice": "voice_5_1"
             },
             {
               "text": "これからどんな動きを見せるのか、",
-              "voice": "test"
+              "voice": "voice_5_2"
             },
             {
               "text": "みんなの目がキラキラと輝いています。",
-              "voice": "test"
+              "voice": "voice_5_3"
             }
           ]
         },
@@ -107,15 +108,15 @@
           "sentences": [
             {
               "text": "ねずみ花火に火がつけられ、",
-              "voice": "test"
+              "voice": "voice_6_1"
             },
             {
               "text": "勢いよく回転しながら火花を散らします。",
-              "voice": "test"
+              "voice": "voice_6_2"
             },
             {
               "text": "子どもたちの歓声が夜空に響き渡ります！",
-              "voice": "test"
+              "voice": "voice_6_3"
             }
           ]
         },
@@ -126,15 +127,15 @@
           "sentences": [
             {
               "text": "夜空に大きな花火が打ち上がり、",
-              "voice": "test"
+              "voice": "voice_7_1"
             },
             {
               "text": "色とりどりの光が広がります。",
-              "voice": "test"
+              "voice": "voice_7_2"
             },
             {
               "text": "『わぁー！』とみんなの目が輝いています。",
-              "voice": "test"
+              "voice": "voice_7_3"
             }
           ]
         },
@@ -145,24 +146,25 @@
           "sentences": [
             {
               "text": "ゴミを持ち帰るように呼びかける看板。",
-              "voice": "test"
+              "voice": "voice_8_1"
             },
             {
               "text": "子どもたちも協力して、",
-              "voice": "test"
+              "voice": "voice_8_2"
             },
             {
               "text": "きれいな会場を保ちます。",
-              "voice": "test"
+              "voice": "voice_8_3"
             },
             {
               "text": "みんなで楽しい思い出を大切に！",
-              "voice": "test"
+              "voice": "voice_8_4"
             }
           ]
         },
         "illustration": "illustration8"
       }
-    ]
+    ],
+    "voiceEnd": "voice_end"
   }
 }

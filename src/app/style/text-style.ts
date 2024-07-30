@@ -22,6 +22,8 @@ export class TextStyle {
 
       fontFamily: 'corporate-mincho',
 
+      letterSpacing: 0.1,
+
       ...options,
     });
   }

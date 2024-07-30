@@ -3,9 +3,11 @@ import * as PIXI from 'pixi.js';
 import bottle from "../../../framework/bottle";
 import rocket from "../../../framework/rocket";
 import {View} from '../../../framework/view';
+import {BOTTLE_AUDIO_CONTEXT} from "../../env/bottle";
 import {EVENT_NEXT_PAGE} from "../../env/event";
 import {ArticleModel} from "../../model/article-model";
 import {BookModel} from "../../model/book-model";
+import {MaskSprite} from "../../sprite/mask-sprite";
 import {TextStyle} from "../../style/text-style";
 import {ArticleView} from "./component/article-view";
 
@@ -13,6 +15,7 @@ export class PageView extends View {
 
   private bookModel: BookModel = bottle.inject(BookModel);
   private textStyle: TextStyle = bottle.inject(TextStyle);
+  private audioContext: AudioContext = bottle.inject(BOTTLE_AUDIO_CONTEXT);
   private articleView: ArticleView;
   private illustration: PIXI.Sprite;
   private nextBtn: PIXI.Text;
@@ -76,10 +79,24 @@ export class PageView extends View {
 
     if (!isLast) {
       this.fadeInNextBtn(tl);
+    } else {
+      tl.add(function(){ console.log("End") } , '+=0.75' )
+
+      tl.to(null, {
+        onStart: async function (voice: AudioBuffer, audioContext: AudioContext) {
+          const source = audioContext.createBufferSource();
+          source.buffer = voice;
+          source.connect(audioContext.destination);
+          source.start(0);
+        },
+        onStartParams: [this.bookModel.voiceEnd, this.audioContext],
+      });
     }
   }
 
   public fadeIn(tl: gsap.core.Timeline) {
+    this.articleView.x = (this.width - this.articleView.getMaxTextWidth()) / 2;
+
     tl.to(this, {alpha: 1, duration: 1});
   }
 

@@ -51,9 +51,14 @@ export class MainController extends Controller {
       return;
     }
 
-    this.pageIdx === 0 ? this.coverView.fadeOut(this.tl) : this.pageView.fadeOut(this.tl);
+    if (this.pageIdx === 0) {
+      this.coverView.play(this.tl);
+      this.coverView.fadeOut(this.tl)
+    } else {
+      this.pageView.fadeOut(this.tl);
+    }
 
-    this.pageView.fadeOut(this.tl);
+    // this.pageView.fadeOut(this.tl);
     this.pageView.setAssets(this.bookModel.pages[this.pageIdx].article, this.bookModel.pages[this.pageIdx].illustration)
     this.pageView.fadeIn(this.tl);
 

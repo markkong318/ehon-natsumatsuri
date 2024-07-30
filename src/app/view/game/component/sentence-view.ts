@@ -17,6 +17,8 @@ export class SentenceView extends View {
   private textSprite: PIXI.Text;
   private maskSprite: PIXI.Sprite;
 
+  private textWidth: number;
+
   constructor(text: string, voice: AudioBuffer) {
     super();
 
@@ -29,6 +31,8 @@ export class SentenceView extends View {
 
     this.textSprite = new PIXI.Text(this.text, style);
 
+    this.textWidth = this.textSprite.width;
+
     this.maskSprite = new MaskSprite().get();
     this.maskSprite.x = -MaskSprite.WIDTH;
     this.maskSprite.y = (this.textSprite.height - this.maskSprite.height) / 2;
@@ -37,6 +41,10 @@ export class SentenceView extends View {
 
     this.addChild(this.maskSprite)
     this.addChild(this.textSprite);
+  }
+
+  public getTextWidth() {
+    return this.textWidth;
   }
 
   play(tl: gsap.core.Timeline) {

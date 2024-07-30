@@ -72,9 +72,11 @@ export class ResourceController extends Controller {
     this.bookModel = new BookModel();
     this.bookModel.backgroundColor = parseInt(game.book.backgroundColor, 16);
     this.bookModel.fontColor = parseInt(game.book.fontColor, 16);
+    this.bookModel.voiceEnd = this.voiceResource.get(game.book.voiceEnd);
 
     const coverModel = new CoverModel();
     coverModel.title = game.book.cover.title;
+    coverModel.voice = this.voiceResource.get(game.book.cover.voice);
     this.bookModel.cover = coverModel;
 
     for (let i = 0; i < game.book.pages.length; i++) {

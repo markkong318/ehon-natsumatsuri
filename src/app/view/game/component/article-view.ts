@@ -37,4 +37,8 @@ export class ArticleView extends View {
       tl.add(function(){ console.log(" Hi  ") } , '+=0.75' )
     }
   }
+
+  public getMaxTextWidth() {
+    return Math.max(...this.sentenceViews.map(view => view.getTextWidth()));
+  }
 }

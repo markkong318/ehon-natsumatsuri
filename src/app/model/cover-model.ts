@@ -4,4 +4,5 @@ import {ArticleModel} from "./article-model";
 
 export class CoverModel extends Model {
   public title: string;
+  public voice: AudioBuffer;
 }

@@ -7,4 +7,5 @@ export class BookModel extends Model {
     public pages: PageModel[] = [];
     public backgroundColor: number;
     public fontColor: number;
+    public voiceEnd: AudioBuffer;
 }
