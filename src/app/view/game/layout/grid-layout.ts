@@ -31,12 +31,12 @@ export class GridLayout {
       view.height = height;
     }
 
-    console.log("vw: " + view.width)
-    console.log("vh: " + view.height)
-    console.log("scale: " + view.scale)
+    console.log('vw: ' + view.width)
+    console.log('vh: ' + view.height)
+    console.log('scale: ' + view.scale)
 
-    console.log("cellWidth: " + width)
-    console.log("cellHeight: " + height)
+    console.log('cellWidth: ' + width)
+    console.log('cellHeight: ' + height)
 
     const x =
       this.padding +
@@ -59,12 +59,12 @@ export class GridLayout {
       view.height = height;
     }
 
-    console.log("vw: " + view.width)
-    console.log("vh: " + view.height)
-    console.log("scale: " + view.scale)
+    console.log('vw: ' + view.width)
+    console.log('vh: ' + view.height)
+    console.log('scale: ' + view.scale)
 
-    console.log("cellWidth: " + width)
-    console.log("cellHeight: " + height)
+    console.log('cellWidth: ' + width)
+    console.log('cellHeight: ' + height)
 
     const x =
       this.padding +

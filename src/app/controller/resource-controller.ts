@@ -2,16 +2,16 @@ import * as PIXI from 'pixi.js';
 import game from '../../assets/data/game.json';
 import illustrations from '../../assets/images/*.png';
 import voices from '../../assets/voices/*.wav';
-import bottle from "../../framework/bottle";
-import {Controller} from "../../framework/controller";
-import {BOTTLE_AUDIO_CONTEXT} from "../env/bottle";
-import {ArticleModel} from "../model/article-model";
-import {BookModel} from "../model/book-model";
-import {CoverModel} from "../model/cover-model";
-import {PageModel} from "../model/page-model";
-import {SentenceModel} from "../model/sentence-model";
-import {IllustrationResource} from "../storage/illustration-resource";
-import {VoiceResource} from "../storage/voice-resource";
+import bottle from '../../framework/bottle';
+import {Controller} from '../../framework/controller';
+import {BOTTLE_AUDIO_CONTEXT} from '../env/bottle';
+import {ArticleModel} from '../model/article-model';
+import {BookModel} from '../model/book-model';
+import {CoverModel} from '../model/cover-model';
+import {PageModel} from '../model/page-model';
+import {SentenceModel} from '../model/sentence-model';
+import {IllustrationResource} from '../storage/illustration-resource';
+import {VoiceResource} from '../storage/voice-resource';
 
 export class ResourceController extends Controller {
   private illustrationResource: any = bottle.inject(IllustrationResource);
@@ -41,7 +41,7 @@ export class ResourceController extends Controller {
         continue;
       }
 
-      console.log(key + " -> " + voices[key]);
+      console.log(key + ' -> ' + voices[key]);
 
       // @ts-ignore
       const url = new URL(voices[key], import.meta.url);
@@ -57,7 +57,7 @@ export class ResourceController extends Controller {
   private async loadIllustrations() {
     for (let key in illustrations) {
       if (illustrations.hasOwnProperty(key)) {
-        console.log(key + " -> " + illustrations[key]);
+        console.log(key + ' -> ' + illustrations[key]);
 
         // @ts-ignore
         const url = new URL(illustrations[key], import.meta.url);

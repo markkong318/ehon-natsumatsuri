@@ -1,13 +1,12 @@
-import {ObservablePoint} from "@pixi/core";
-import {gsap} from "gsap";
-import * as PIXI from "pixi.js";
-import bottle from "../../../framework/bottle";
-import rocket from "../../../framework/rocket";
-import {View} from "../../../framework/view";
-import {BOTTLE_AUDIO_CONTEXT} from "../../env/bottle";
-import {EVENT_NEXT_PAGE} from "../../env/event";
-import {BookModel} from "../../model/book-model";
-import {TextStyle} from "../../style/text-style";
+import {gsap} from 'gsap';
+import * as PIXI from 'pixi.js';
+import bottle from '../../../framework/bottle';
+import rocket from '../../../framework/rocket';
+import {View} from '../../../framework/view';
+import {BOTTLE_AUDIO_CONTEXT} from '../../env/bottle';
+import {EVENT_NEXT_PAGE} from '../../env/event';
+import {BookModel} from '../../model/book-model';
+import {TextStyle} from '../../style/text-style';
 
 export class CoverView extends View {
 
@@ -30,7 +29,9 @@ export class CoverView extends View {
     this.addChild(this.title);
 
     this.nextBtn = new PIXI.Text('次へ', this.textStyle.getWithColor(this.bookModel.fontColor));
-    this.nextBtn.anchor = new PIXI.ObservablePoint(() => {}, () => {}, 0.5, 0.5);
+    this.nextBtn.anchor = new PIXI.ObservablePoint(() => {
+    }, () => {
+    }, 0.5, 0.5);
     this.nextBtn.x = (this.width) / 2;
     this.nextBtn.y = 420;
     this.nextBtn.alpha = 1;
@@ -55,7 +56,9 @@ export class CoverView extends View {
   }
 
   public play(tl: gsap.core.Timeline) {
-    tl.add(function(){ console.log("End") } , '+=0.75' )
+    tl.add(function () {
+      console.log('End')
+    }, '+=0.75')
 
     tl.to(null, {
       onStart: async function (voice: AudioBuffer, audioContext: AudioContext) {

@@ -1,15 +1,14 @@
-import {gsap} from "gsap";
+import {gsap} from 'gsap';
 import * as PIXI from 'pixi.js';
-import bottle from "../../../framework/bottle";
-import rocket from "../../../framework/rocket";
+import bottle from '../../../framework/bottle';
+import rocket from '../../../framework/rocket';
 import {View} from '../../../framework/view';
-import {BOTTLE_AUDIO_CONTEXT} from "../../env/bottle";
-import {EVENT_NEXT_PAGE} from "../../env/event";
-import {ArticleModel} from "../../model/article-model";
-import {BookModel} from "../../model/book-model";
-import {MaskSprite} from "../../sprite/mask-sprite";
-import {TextStyle} from "../../style/text-style";
-import {ArticleView} from "./component/article-view";
+import {BOTTLE_AUDIO_CONTEXT} from '../../env/bottle';
+import {EVENT_NEXT_PAGE} from '../../env/event';
+import {ArticleModel} from '../../model/article-model';
+import {BookModel} from '../../model/book-model';
+import {TextStyle} from '../../style/text-style';
+import {ArticleView} from './component/article-view';
 
 export class PageView extends View {
 
@@ -80,7 +79,9 @@ export class PageView extends View {
     if (!isLast) {
       this.fadeInNextBtn(tl);
     } else {
-      tl.add(function(){ console.log("End") } , '+=0.75' )
+      tl.add(function () {
+        console.log('End')
+      }, '+=0.75')
 
       tl.to(null, {
         onStart: async function (voice: AudioBuffer, audioContext: AudioContext) {

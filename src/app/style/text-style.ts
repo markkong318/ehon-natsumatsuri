@@ -1,4 +1,4 @@
-import * as PIXI from "pixi.js";
+import * as PIXI from 'pixi.js';
 
 export class TextStyle {
   public get(options?: {}): PIXI.TextStyle {
@@ -9,7 +9,7 @@ export class TextStyle {
       dropShadowBlur: 10,
       dropShadowDistance: 0,
       fill: [
-        "#ffffff",
+        '#ffffff',
       ],
       fillGradientType: 1,
       fillGradientStops: [

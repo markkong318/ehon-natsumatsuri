@@ -1,13 +1,13 @@
 import * as PIXI from 'pixi.js';
+import {Background} from '../../framework/background';
+import bottle from '../../framework/bottle';
+import {Size} from '../../framework/size';
 
 import {View} from '../../framework/view';
-import {Size} from '../../framework/size';
-import bottle from '../../framework/bottle';
-import {Background} from '../../framework/background';
-import {BookModel} from "../model/book-model";
-import {CoverView} from "./game/cover-view";
+import {BookModel} from '../model/book-model';
+import {CoverView} from './game/cover-view';
+import {PageView} from './game/page-view';
 import {TouchSprite} from './game/touch-sprite';
-import {PageView} from "./game/page-view";
 
 export class GameView extends View {
   private bookModel: BookModel = bottle.inject(BookModel);

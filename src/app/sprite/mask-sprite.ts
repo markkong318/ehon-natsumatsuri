@@ -1,4 +1,4 @@
-import * as PIXI from "pixi.js";
+import * as PIXI from 'pixi.js';
 
 export class MaskSprite {
 
@@ -19,7 +19,7 @@ export class MaskSprite {
 
     const ctx = canvas.getContext('2d');
 
-    ctx.fillStyle = "white"
+    ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, MaskSprite.WIDTH - MaskSprite.GRADIENT_WIDTH, MaskSprite.HEIGHT)
 
     const grd = ctx.createLinearGradient(MaskSprite.WIDTH - MaskSprite.GRADIENT_WIDTH, 0, MaskSprite.WIDTH, 0);

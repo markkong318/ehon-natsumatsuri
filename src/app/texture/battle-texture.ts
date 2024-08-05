@@ -1,13 +1,13 @@
 import * as PIXI from 'pixi.js';
 import {SCALE_MODES} from 'pixi.js';
-import bottle from '../../framework/bottle';
-import {Texture} from '../../framework/texture';
 
 import acientFighter from '../../assets/images/AncientFighterIdleSide.png';
+import bloodLich from '../../assets/images/BloodLichIdleSide.png';
 import carcassFeeder from '../../assets/images/CarcassFeederIdleSide.png';
 import graveRevenant from '../../assets/images/GraveRevenantIdleSide.png';
 import royalScarab from '../../assets/images/RoyalScarabIdleSide.png';
-import bloodLich from '../../assets/images/BloodLichIdleSide.png';
+import bottle from '../../framework/bottle';
+import {Texture} from '../../framework/texture';
 
 export class BattleTexture extends Texture {
   private renderer: PIXI.Renderer = bottle.inject(PIXI.Renderer);

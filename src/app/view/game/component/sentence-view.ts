@@ -1,11 +1,11 @@
-import bottle from "../../../../framework/bottle";
-import {View} from "../../../../framework/view";
-import {BOTTLE_AUDIO_CONTEXT} from "../../../env/bottle";
-import {BookModel} from "../../../model/book-model";
-import {MaskSprite} from "../../../sprite/mask-sprite";
-import * as PIXI from "pixi.js";
-import {gsap} from "gsap";
-import {TextStyle} from "../../../style/text-style";
+import {gsap} from 'gsap';
+import * as PIXI from 'pixi.js';
+import bottle from '../../../../framework/bottle';
+import {View} from '../../../../framework/view';
+import {BOTTLE_AUDIO_CONTEXT} from '../../../env/bottle';
+import {BookModel} from '../../../model/book-model';
+import {MaskSprite} from '../../../sprite/mask-sprite';
+import {TextStyle} from '../../../style/text-style';
 
 export class SentenceView extends View {
 

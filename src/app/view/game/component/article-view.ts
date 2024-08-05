@@ -1,7 +1,7 @@
-import {View} from "../../../../framework/view";
-import {SentenceView} from "./sentence-view";
-import {ArticleModel} from "../../../model/article-model";
-import {gsap} from "gsap";
+import {gsap} from 'gsap';
+import {View} from '../../../../framework/view';
+import {ArticleModel} from '../../../model/article-model';
+import {SentenceView} from './sentence-view';
 
 export class ArticleView extends View {
 
@@ -34,7 +34,9 @@ export class ArticleView extends View {
   public play(tl: gsap.core.Timeline) {
     for (let i = 0; i < this.articleModel.sentences.length; i++) {
       this.sentenceViews[i].play(tl);
-      tl.add(function(){ console.log(" Hi  ") } , '+=0.75' )
+      tl.add(function () {
+        console.log(' Hi  ')
+      }, '+=0.75')
     }
   }
 
