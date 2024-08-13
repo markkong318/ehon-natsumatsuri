@@ -36,22 +36,22 @@ export class ResourceController extends Controller {
 
     bottle.set(BOTTLE_AUDIO_CONTEXT, audioContext);
 
-    for (let key in voices) {
-      if (!voices.hasOwnProperty(key)) {
-        continue;
-      }
+    const promises = Object.keys(voices)
+      .filter(key => voices.hasOwnProperty(key))
+      .map(async key => {
+        console.log(key + ' -> ' + voices[key]);
 
-      console.log(key + ' -> ' + voices[key]);
+        // @ts-ignore
+        const url = new URL(voices[key], import.meta.url);
 
-      // @ts-ignore
-      const url = new URL(voices[key], import.meta.url);
+        const response = await fetch(url.href);
+        const arrayBuffer = await response.arrayBuffer();
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 
-      const response = await fetch(url.href);
-      const arrayBuffer = await response.arrayBuffer();
-      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        this.voiceResource.set(key, audioBuffer);
+      });
 
-      this.voiceResource.set(key, audioBuffer);
-    }
+    await Promise.all(promises);
   }
 
   private async loadIllustrations() {

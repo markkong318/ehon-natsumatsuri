@@ -48,7 +48,6 @@ export class SentenceView extends View {
   }
 
   play(tl: gsap.core.Timeline) {
-    console.log(this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH);
     tl.to(this.maskSprite, {
       x: this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH,
       duration: this.voice.duration,

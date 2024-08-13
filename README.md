@@ -1,6 +1,6 @@
-# ehon
+# ehon player v1.0
 
-Game which is forked from `parcel-pixijs-quickstarter` and apply MVC
+Ehon player which is forked from `parcel-pixijs-quickstarter` and apply MVC
 
 ![img.png](img.png)
 
@@ -8,7 +8,7 @@ Game which is forked from `parcel-pixijs-quickstarter` and apply MVC
 
 ```bash
 # clone the repo.
-git clone https://github.com/markkong318/flick-quest.git
+git clone https://github.com/markkong318/ehon-2nd.git
 
 # go to the repo
 cd flick-quest
@@ -21,7 +21,7 @@ npm run start
 ```
 go to [http://localhost:1234](http://localhost:1234) in your browser. Done.
 
-DEMO: [https://markkong318.github.io/flick-quest/](https://markkong318.github.io/ehon-2nd/)
+DEMO: [https://markkong318.github.io/ehon-2nd/](https://markkong318.github.io/ehon-2nd/)
 
 # Asset
 Undead asset pack
