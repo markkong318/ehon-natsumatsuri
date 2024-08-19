@@ -7,6 +7,7 @@ import {BOTTLE_AUDIO_CONTEXT} from '../../env/bottle';
 import {EVENT_NEXT_PAGE} from '../../env/event';
 import {BookModel} from '../../model/book-model';
 import {TextStyle} from '../../style/text-style';
+import {GsapUtil} from '../../util/gsap-util';
 
 export class CoverView extends View {
 
@@ -48,26 +49,15 @@ export class CoverView extends View {
   }
 
   public fadeIn(tl: gsap.core.Timeline) {
-    tl.to(this, {alpha: 1, duration: 1});
+    GsapUtil.toFadeIn(tl, this);
   }
 
   public fadeOut(tl: gsap.core.Timeline) {
-    tl.to(this, {alpha: 0, duration: 1});
+    GsapUtil.toFadeOut(tl, this);
   }
 
   public play(tl: gsap.core.Timeline) {
-    tl.add(function () {
-      console.log('End')
-    }, '+=0.75')
-
-    tl.to(null, {
-      onStart: async function (voice: AudioBuffer, audioContext: AudioContext) {
-        const source = audioContext.createBufferSource();
-        source.buffer = voice;
-        source.connect(audioContext.destination);
-        source.start(0);
-      },
-      onStartParams: [this.bookModel.cover.voice, this.audioContext],
-    });
+    GsapUtil.toWait(tl);
+    GsapUtil.toVoice(tl, this.bookModel.cover.voice, this.audioContext);
   }
 }

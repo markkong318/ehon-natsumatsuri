@@ -1,4 +1,4 @@
-# ehon player v1.0
+# ehon-player-v2
 
 Ehon player which is forked from `parcel-pixijs-quickstarter` and apply MVC
 
@@ -11,7 +11,7 @@ Ehon player which is forked from `parcel-pixijs-quickstarter` and apply MVC
 git clone https://github.com/markkong318/ehon-2nd.git
 
 # go to the repo
-cd flick-quest
+cd ehon-2nd
 
 # install the dependencies via npm
 npm install
@@ -24,6 +24,6 @@ go to [http://localhost:1234](http://localhost:1234) in your browser. Done.
 DEMO: [https://markkong318.github.io/ehon-2nd/](https://markkong318.github.io/ehon-2nd/)
 
 # Asset
-Undead asset pack
-https://deepdivegamestudio.itch.io/undead-asset-pack?download
-# ehon-2nd
+image from イラストや
+
+voice from VOICEVOX

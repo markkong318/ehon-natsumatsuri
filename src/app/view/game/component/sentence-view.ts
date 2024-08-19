@@ -6,6 +6,7 @@ import {BOTTLE_AUDIO_CONTEXT} from '../../../env/bottle';
 import {BookModel} from '../../../model/book-model';
 import {MaskSprite} from '../../../sprite/mask-sprite';
 import {TextStyle} from '../../../style/text-style';
+import {GsapUtil} from '../../../util/gsap-util';
 
 export class SentenceView extends View {
 
@@ -48,16 +49,12 @@ export class SentenceView extends View {
   }
 
   play(tl: gsap.core.Timeline) {
-    tl.to(this.maskSprite, {
-      x: this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH,
-      duration: this.voice.duration,
-      onStart: async function (voice: AudioBuffer, audioContext: AudioContext) {
-        const source = audioContext.createBufferSource();
-        source.buffer = voice;
-        source.connect(audioContext.destination);
-        source.start(0);
-      },
-      onStartParams: [this.voice, this.audioContext],
-    });
+    GsapUtil.toTextVoice(
+      tl,
+      this.maskSprite,
+      this.textSprite.x + this.textSprite.width - MaskSprite.WIDTH + MaskSprite.GRADIENT_WIDTH,
+      this.voice.duration,
+      this.voice,
+      this.audioContext);
   }
 }
